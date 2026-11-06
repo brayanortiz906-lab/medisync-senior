@@ -122,7 +122,7 @@ Guía completa: [FIREBASE_SETUP.md](FIREBASE_SETUP.md)
 ## 📄 Ensayo Académico
 
 - Formato: APA 7.
-- Disponible en: `ensayo_medisync_senior.html` (visualización web) y `MediSync_Senior_Ensayo_APA7.docx` (descarga).
+- Disponible en: `ensayo_medisync_senior.html` (visualización web) y `MediSync_Senior_Ensayo.docx` (descarga).
 - Incluye: planteamiento del problema, marco teórico, metodología, resultados y conclusiones.
 
 ---
