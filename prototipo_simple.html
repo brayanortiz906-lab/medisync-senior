@@ -21,6 +21,35 @@
   </style>
 </head>
 <body class="min-h-screen flex flex-col items-center p-4 gap-4">
+<!-- NAV MENU (self-contained) -->
+<nav class="sticky top-0 z-50 glass-strong border-b border-white/10 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-14">
+      <a href="index.html" class="flex items-center gap-2 text-white font-black text-sm">
+        <i class="fa-solid fa-heart-pulse text-emerald-400"></i>
+        <span class="hidden sm:inline">MediSync Senior</span>
+      </a>
+      <div class="hidden md:flex items-center gap-1">
+        <a href="index.html" class="px-3 py-2 text-sm text-slate-300 hover:text-white rounded-lg hover:bg-white/10 transition">Inicio</a>
+        <a href="landing_medisync_senior.html" class="px-3 py-2 text-sm text-slate-300 hover:text-white rounded-lg hover:bg-white/10 transition">Landing</a>
+        <a href="tutorial_medisync.html" class="px-3 py-2 text-sm text-slate-300 hover:text-white rounded-lg hover:bg-white/10 transition">Tutorial</a>
+        <a href="prototipo_simple.html" class="px-3 py-2 text-sm text-slate-300 hover:text-white rounded-lg hover:bg-white/10 transition">Prototipo</a>
+        <a href="ensayo_medisync_senior.html" class="px-3 py-2 text-sm text-slate-300 hover:text-white rounded-lg hover:bg-white/10 transition">Ensayo</a>
+      </div>
+      <button class="md:hidden text-slate-300 hover:text-white" onclick="document.getElementById('navMobile').classList.toggle('hidden')">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+    <div id="navMobile" class="hidden md:hidden pb-3 space-y-1">
+      <a href="index.html" class="block px-3 py-2 text-sm text-slate-300 hover:text-white rounded-lg hover:bg-white/10">Inicio</a>
+      <a href="landing_medisync_senior.html" class="block px-3 py-2 text-sm text-slate-300 hover:text-white rounded-lg hover:bg-white/10">Landing</a>
+      <a href="tutorial_medisync.html" class="block px-3 py-2 text-sm text-slate-300 hover:text-white rounded-lg hover:bg-white/10">Tutorial</a>
+      <a href="prototipo_simple.html" class="block px-3 py-2 text-sm text-slate-300 hover:text-white rounded-lg hover:bg-white/10">Prototipo</a>
+      <a href="ensayo_medisync_senior.html" class="block px-3 py-2 text-sm text-slate-300 hover:text-white rounded-lg hover:bg-white/10">Ensayo</a>
+    </div>
+  </div>
+</nav>
+
 
   <!-- HEADER -->
   <div class="text-center w-full max-w-3xl">
