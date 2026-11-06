@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediSync Senior - Prototipo Simplificado</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #030712; color: #e2e8f0; }
+    .glass { background: rgba(15,23,42,0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+    .phone-frame { max-width: 340px; }
+    .pulse-dot { animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .slide-in { animation: slideIn 0.4s ease-out; }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .toast { animation: toastIn 0.3s ease-out, toastOut 0.3s ease-in 2.7s; }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes toastOut { from { opacity: 1; } to { opacity: 0; } }
+    .progress-ring { transition: stroke-dashoffset 0.5s ease; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center p-4 gap-4">
+
+  <!-- HEADER -->
+  <div class="text-center w-full max-w-3xl">
+    <div class="flex items-center justify-center gap-2 mb-1">
+      <i class="fa-solid fa-heart-pulse text-3xl text-emerald-400"></i>
+      <h1 class="text-xl font-black">MediSync Senior — Prototipo</h1>
+    </div>
+    <p class="text-[10px] text-slate-400">Demo simplificado: ambas vistas lado a lado · Sin código de vinculación</p>
+    <div class="flex items-center justify-center gap-2 mt-2">
+      <span class="flex items-center gap-1 text-[9px] text-emerald-400"><span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span> Demo activo</span>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2"></div>
+
+  <!-- MAIN CONTENT -->
+  <div class="flex flex-col md:flex-row gap-4 w-full max-w-3xl justify-center">
+
+    <!-- VISTA MAMÁ -->
+    <div class="phone-frame flex-1 glass rounded-3xl p-4 space-y-3">
+      <div class="flex items-center gap-2 mb-2">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center">
+          <i class="fa-solid fa-user text-white text-sm"></i>
+        </div>
+        <span class="text-sm font-bold text-blue-300">Vista Mamá (María)</span>
+      </div>
+
+      <!-- Greeting -->
+      <div class="bg-gradient-to-r from-blue-700 to-indigo-700 rounded-2xl p-3 text-white">
+        <p class="text-[10px] text-blue-200 font-bold uppercase tracking-widest">Hola, María</p>
+        <h2 class="text-lg font-black">Toma de Medicina</h2>
+      </div>
+
+      <!-- Medication Card -->
+      <div class="bg-slate-900/80 rounded-2xl p-3 border border-slate-700">
+        <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Medicina de hoy</p>
+        <p class="text-base font-black text-white mt-1">Losartán 50mg</p>
+        <p class="text-xs text-slate-400">1 tableta — 8:00 AM</p>
+        <div class="mt-2 bg-slate-800 rounded-xl p-3 flex items-center gap-3">
+          <i class="fa-solid fa-image text-slate-500 text-lg"></i>
+          <span class="text-[10px] text-slate-400">Foto de la caja (tamaño gigante)</span>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <button id="take-dose-btn" onclick="takeDose()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-3 rounded-xl text-sm transition active:scale-95">
+        <i class="fa-solid fa-check mr-2"></i> ¡YA ME LA TOMÉ!
+      </button>
+
+      <div id="mama-status" class="text-[10px] text-center text-slate-500"></div>
+    </div>
+
+    <!-- VISTA CUIDADOR -->
+    <div class="phone-frame flex-1 glass rounded-3xl p-4 space-y-3">
+      <div class="flex items-center gap-2 mb-2">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center">
+          <i class="fa-solid fa-user-shield text-white text-sm"></i>
+        </div>
+        <span class="text-sm font-bold text-emerald-300">Vista Cuidador (Santiago)</span>
+      </div>
+
+      <!-- Status Card -->
+      <div class="bg-emerald-900/50 border border-emerald-700 rounded-2xl p-3 text-center">
+        <p class="text-xs font-bold text-emerald-200">Estado de María</p>
+        <p id="caregiver-status" class="text-sm font-bold text-amber-400 mt-2">⚠️ Losartán 50mg pendiente</p>
+      </div>
+
+      <!-- Medication Info -->
+      <div class="bg-slate-900/80 rounded-2xl p-3 border border-slate-700">
+        <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Próxima toma</p>
+        <p class="text-sm font-bold text-white mt-1">Losartán 50mg</p>
+        <p class="text-xs text-slate-400">8:00 AM — 1 tableta</p>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="bg-slate-900/80 rounded-2xl p-3 border border-slate-700">
+        <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold mb-2">Acciones rápidas</p>
+        <div class="flex gap-2">
+          <button onclick="sendReminder()" class="flex-1 bg-blue-600/30 border border-blue-500/30 text-blue-300 text-[10px] font-bold py-2 rounded-lg hover:bg-blue-600/50 transition">
+            <i class="fa-solid fa-volume-high mr-1"></i> Recordatorio
+          </button>
+          <button onclick="callMama()" class="flex-1 bg-rose-600/30 border border-rose-500/30 text-rose-300 text-[10px] font-bold py-2 rounded-lg hover:bg-rose-600/50 transition">
+            <i class="fa-solid fa-phone mr-1"></i> Llamar
+          </button>
+        </div>
+      </div>
+
+      <button onclick="resetDemo()" class="w-full bg-slate-700 hover:bg-slate-600 text-white font-bold py-2 rounded-xl text-xs transition">
+        <i class="fa-solid fa-rotate mr-1"></i> Reiniciar demo
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="text-center text-[9px] text-slate-500 mt-2">
+    <p>MediSync Senior · Prototipo simplificado · Institución Universitaria Pascual Bravo · TICs 2026</p>
+  </div>
+
+  <script>
+    let doseTaken = false;
+
+    function takeDose() {
+      if (doseTaken) return;
+      doseTaken = true;
+      const time = new Date().toLocaleTimeString();
+      // Update mama view
+      const mamaStatus = document.getElementById('mama-status');
+      mamaStatus.innerText = '✅ ¡Dosis registrada! Santiago fue notificado.';
+      mamaStatus.className = 'text-[10px] text-center text-emerald-400';
+      document.getElementById('take-dose-btn').disabled = true;
+      document.getElementById('take-dose-btn').className = 'w-full bg-slate-600 text-slate-400 font-black py-3 rounded-xl text-sm cursor-not-allowed';
+
+      // Update caregiver view (simulate real-time sync)
+      setTimeout(() => {
+        const cgStatus = document.getElementById('caregiver-status');
+        cgStatus.innerText = '✅ Losartán tomado (' + time + ')';
+        cgStatus.className = 'text-sm font-bold text-emerald-400 mt-2';
+        showToast('✅ Santiago recibió confirmación en tiempo real', 'success');
+      }, 300);
+    }
+
+    function resetDemo() {
+      doseTaken = false;
+      document.getElementById('mama-status').innerText = '';
+      document.getElementById('mama-status').className = 'text-[10px] text-center text-slate-500';
+      document.getElementById('take-dose-btn').disabled = false;
+      document.getElementById('take-dose-btn').className = 'w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-3 rounded-xl text-sm transition active:scale-95';
+      document.getElementById('take-dose-btn').innerHTML = '<i class="fa-solid fa-check mr-2"></i> ¡YA ME LA TOMÉ!';
+      document.getElementById('caregiver-status').innerText = '⚠️ Losartán 50mg pendiente';
+      document.getElementById('caregiver-status').className = 'text-sm font-bold text-amber-400 mt-2';
+      showToast('Demo reiniciado', 'info');
+    }
+
+    function sendReminder() {
+      showToast('📢 Recordatorio enviado a María', 'success');
+    }
+
+    function callMama() {
+      showToast('📞 Llamando a María...', 'info');
+    }
+
+    function showToast(message, type) {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      const colors = {
+        success: 'bg-emerald-600/90 border-emerald-500',
+        error: 'bg-rose-600/90 border-rose-500',
+        warning: 'bg-amber-600/90 border-amber-500',
+        info: 'bg-blue-600/90 border-blue-500',
+      };
+      toast.className = `toast ${colors[type] || colors.info} border text-white text-xs font-bold px-4 py-2 rounded-xl shadow-xl max-w-xs`;
+      toast.innerText = message;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+  </script>
+</body>
+</html>
