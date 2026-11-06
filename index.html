@@ -2,10 +2,129 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=landing_medisync_senior.html">
-  <title>MediSync Senior</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediSync Senior — Portal del Proyecto</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #030712; color: #e2e8f0; }
+    .glass { background: rgba(15,23,42,0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+    .card:hover { transform: translateY(-4px); border-color: rgba(59,130,246,0.4); }
+    .card { transition: all .3s ease; }
+  </style>
 </head>
-<body>
-  <p>Redirigiendo a <a href="landing_medisync_senior.html">MediSync Senior</a>...</p>
+<body class="min-h-screen p-4 sm:p-8">
+  <div class="max-w-5xl mx-auto">
+    <!-- Header -->
+    <header class="text-center mb-10">
+      <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-blue-600 to-emerald-500 flex items-center justify-center shadow-xl mb-4">
+        <i class="fa-solid fa-heart-pulse text-white text-3xl"></i>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-black text-white">MediSync Senior</h1>
+      <p class="text-sm text-slate-400 mt-2">Portal del Proyecto — Institución Universitaria Pascual Bravo · TICs 2026</p>
+      <p class="text-xs text-slate-500 mt-1">Adherencia médica para adultos mayores · Doble vista (Mamá y Cuidador)</p>
+    </header>
+
+    <!-- Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- Landing Page -->
+      <a href="landing_medisync_senior.html" class="card glass rounded-2xl p-6 block">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center mb-4">
+          <i class="fa-solid fa-globe text-white text-xl"></i>
+        </div>
+        <h2 class="text-lg font-black text-white">Landing Page</h2>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Página principal del proyecto. Hero, problema, solución, demo, pitch, ensayo y equipo. Diseño dark con glassmorphism.</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-blue-400">Ver página <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Prototipo Completo -->
+      <a href="interfaz_medisync_senior.html" class="card glass rounded-2xl p-6 block">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center mb-4">
+          <i class="fa-solid fa-mobile-screen text-white text-xl"></i>
+        </div>
+        <h2 class="text-lg font-black text-white">Prototipo Completo</h2>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">App funcional con doble vista, voz, sincronización (Firebase + modo local), código de vinculación y todas las funcionalidades.</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-emerald-400">Probar app <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Prototipo Demo -->
+      <a href="prototipo_demo.html" class="card glass rounded-2xl p-6 block">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center mb-4">
+          <i class="fa-solid fa-display text-white text-xl"></i>
+        </div>
+        <h2 class="text-lg font-black text-white">Prototipo Demo</h2>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Ambas vistas (Mamá y Cuidador) lado a lado. Sin código de vinculación. Ideal para presentaciones y pitch.</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-purple-400">Ver demo <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Prototipo de Prueba -->
+      <a href="prototipo_prueba.html" class="card glass rounded-2xl p-6 block">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-600 to-orange-600 flex items-center justify-center mb-4">
+          <i class="fa-solid fa-flask text-white text-xl"></i>
+        </div>
+        <h2 class="text-lg font-black text-white">Prototipo de Prueba</h2>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Flujo completo con código de vinculación de 6 dígitos. Funciona sin Firebase (modo local). Ideal para probar el flujo.</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-amber-400">Probar flujo <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Ensayo APA 7 -->
+      <a href="ensayo_medisync_senior.html" class="card glass rounded-2xl p-6 block">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-600 to-slate-800 flex items-center justify-center mb-4">
+          <i class="fa-solid fa-file-lines text-white text-xl"></i>
+        </div>
+        <h2 class="text-lg font-black text-white">Ensayo Académico</h2>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Ensayo en formato APA 7. Visualización web + descarga DOCX. Incluye previsualizador modal.</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-slate-300">Leer ensayo <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- GitHub Repo -->
+      <a href="https://github.com/brayanortiz906-lab/medisync-senior" target="_blank" rel="noopener" class="card glass rounded-2xl p-6 block">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center mb-4">
+          <i class="fa-brands fa-github text-white text-xl"></i>
+        </div>
+        <h2 class="text-lg font-black text-white">Repositorio GitHub</h2>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Código fuente completo, documentación, configuración Firebase y proyecto Android (Capacitor).</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-slate-300">Ver repo <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></span>
+      </a>
+    </div>
+
+    <!-- Info Section -->
+    <div class="mt-10 glass rounded-2xl p-6">
+      <h3 class="text-lg font-black text-white mb-3">📋 Información del Proyecto</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300">
+        <div>
+          <p class="font-bold text-slate-200">Institución</p>
+          <p>Institución Universitaria Pascual Bravo</p>
+        </div>
+        <div>
+          <p class="font-bold text-slate-200">Materia</p>
+          <p>TICs y Competencias Digitales 2026</p>
+        </div>
+        <div>
+          <p class="font-bold text-slate-200">Equipo</p>
+          <p>Santiago López Vélez · Gustavo Alejandro Giraldo Arce · Brayan Alejandro Ortiz Calle</p>
+        </div>
+        <div>
+          <p class="font-bold text-slate-200">Tecnologías</p>
+          <p>HTML5 · Tailwind CSS · JavaScript · Firebase (opcional) · Capacitor</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Firebase Note -->
+    <div class="mt-6 glass rounded-2xl p-4 border border-amber-500/30">
+      <p class="text-xs text-amber-300">
+        <i class="fa-solid fa-triangle-exclamation mr-1"></i>
+        <strong>Nota:</strong> El prototipo completo usa Firebase para sincronización entre dispositivos. Sin configuración de Firebase, funciona en modo local (mismo navegador). Guía: <a href="FIREBASE_SETUP.md" class="underline hover:text-amber-200">FIREBASE_SETUP.md</a>
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-10 text-center text-[10px] text-slate-500">
+      <p>© 2026 MediSync Senior · Institución Universitaria Pascual Bravo · TICs y Competencias Digitales</p>
+    </footer>
+  </div>
 </body>
 </html>
