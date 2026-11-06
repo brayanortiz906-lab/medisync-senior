@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ensayo - MediSync Senior</title>
+<style>
+
+body{font-family:"Times New Roman",Times,serif;font-size:12pt;line-height:1.6;margin:0;padding:32px;color:#111;background:#fff;}
+h1{font-size:16pt;text-align:center;margin:4px 0 12px;}
+h2{font-size:13pt;margin-top:16px;margin-bottom:4px;}
+h3{font-size:12pt;font-style:italic;margin-top:12px;}
+p{text-align:justify;margin:8px 0;text-indent:1.27cm;}
+p.spacer{margin:4px 0;text-indent:0;}
+.caption{text-align:center;font-style:italic;font-size:10pt;text-indent:0;}
+blockquote{margin:12px 24px;font-style:italic;text-align:justify;}
+ul,ol{margin:8px 0 8px 24px;}
+li{text-align:justify;margin:4px 0;}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:11pt;}
+td,th{border:1px solid #888;padding:6px;vertical-align:top;}
+
+</style>
+</head>
+<body>
+<h1 style="text-align:center;"><strong>MediSync Senior</strong></h1>
+<p style="text-align:center;"><strong> Una propuesta tecnológica accesible para apoyar la adherencia farmacológica en adultos mayores</strong></p>
+<p class="spacer">&nbsp;</p>
+<p style="text-align:center;">Gustavo Alejandro Giraldo Arce, </p>
+<p style="text-align:center;">Santiago López Vélez </p>
+<p style="text-align:center;"> Brayan Alejandro Ortiz Calle</p>
+<p class="spacer">&nbsp;</p>
+<p class="spacer">&nbsp;</p>
+<p class="spacer">&nbsp;</p>
+<p class="spacer">&nbsp;</p>
+<p class="spacer">&nbsp;</p>
+<p class="spacer">&nbsp;</p>
+<p class="spacer">&nbsp;</p>
+<p style="text-align:center;">TICs y Competencias Digitales</p>
+<p style="text-align:center;">Prof. Julián Andrés Correa Uribe</p>
+<p class="spacer">&nbsp;</p>
+<p class="spacer">&nbsp;</p>
+<p class="spacer">&nbsp;</p>
+<p class="spacer">&nbsp;</p>
+<p class="spacer">&nbsp;</p>
+<p class="spacer">&nbsp;</p>
+<p style="text-align:center;">Tecnología en Desarrollo de software
+Institución Universitaria Pascual Bravo</p>
+<p style="text-align:center;">4 de noviembre de 2026</p>
+<h2>Resumen</h2>
+<p>La falta de adherencia a los tratamientos farmacológicos es una situación frecuente en adultos mayores, especialmente cuando deben manejar varios medicamentos al mismo tiempo. En muchos casos, el problema no se debe únicamente al olvido: también influyen las letras pequeñas de los empaques, la similitud entre las cajas, los cambios de horario y las dificultades de memoria o visión. A partir de esa realidad, este trabajo propone MediSync Senior, un prototipo digital pensado para acompañar tanto al adulto mayor como a su cuidador. La propuesta integra una interfaz sencilla, recordatorios con voz, reconocimiento visual de empaques mediante OCR y una vista especial para el cuidador. El documento presenta el problema, la experiencia recogida en el entorno familiar, una comparación con soluciones existentes, la descripción de la solución y las herramientas utilizadas durante el desarrollo.</p>
+<p><strong>Palabras clave: adherencia farmacológica, adulto mayor, accesibilidad digital, cuidador informal, visión artificial, recordatorios de medicamentos.</strong></p>
+<h2>1. El problema</h2>
+<p>Dentro de la asignatura TICs y Competencias Digitales, el equipo decidió trabajar sobre una situación que ocurre con frecuencia en los hogares colombianos: adultos mayores que deben tomar varios medicamentos, pero que a veces no saben con certeza cuál corresponde, a qué hora toca tomarlo o si ya lo hicieron.</p>
+<p>El problema se formuló de la siguiente manera:</p>
+<blockquote>“María y otros adultos mayores con tratamientos crónicos tienen dificultades para tomar el medicamento correcto en el horario indicado porque las cajas son visualmente parecidas, las letras son pequeñas y presentan fallas de memoria. Esto puede generar confusiones, omisiones o duplicaciones de dosis, además de preocupación constante para sus familiares y cuidadores.”</blockquote>
+<p>No se trata de un problema aislado. La Organización Mundial de la Salud ha señalado que la adherencia a los tratamientos de largo plazo es baja en muchos contextos y que, en enfermedades crónicas, el cumplimiento promedio puede ubicarse cerca del 50% en países desarrollados, con situaciones incluso más difíciles en países en desarrollo (World Health Organization [WHO], 2003a). En personas mayores, esta situación se vuelve más compleja por la presencia de varias enfermedades, el uso simultáneo de varios fármacos, el deterioro cognitivo y la necesidad de apoyo de otras personas (Smaje et al., 2018).</p>
+<h3>1.1 Evidencia cualitativa y experiencia directa</h3>
+<p>Para entender mejor el problema, el equipo realizó entrevistas breves con personas cercanas a los integrantes del grupo. Estas conversaciones no pretenden representar estadísticamente a toda la población adulta mayor, pero sí permiten observar cómo se vive el problema en un contexto cotidiano.</p>
+<p><strong>Caso 1: María, 72 años, usuaria final</strong></p>
+<blockquote>“A mí a veces me da miedo tomarme la pastilla de la presión porque no sé si ya me la tomé a las 8 de la mañana o si la que tengo en la mano era la del colesterol. Las cajitas que me da la EPS son todas blancas con una franja azul chiquita. Si no está mi hijo Santiago cerca, a veces prefiero no tomármela para no pasarme de la dosis o tomarme algo que no es.”</blockquote>
+<p>Este testimonio muestra algo importante: el miedo a equivocarse puede llevar a la persona a no tomar el medicamento. Es decir, la confusión no solo produce errores; también puede generar inseguridad y abandono del tratamiento.</p>
+<p><strong>Caso 2: Santiago López Vélez, 35 años, cuidador e hijo</strong></p>
+<blockquote>“Todos los días tengo que llamar a mi mamá a las 10:00 a. m. y a las 2:00 p. m. sin falta. A veces estoy en una reunión de trabajo o manejando y me desconcentro pensando si ella sí se acordó o si confundió los blísteres. Pierdo fácilmente más de una hora diaria entre llamadas, organizar los pastilleros los domingos y la angustia de pensar que pueda terminar hospitalizada.”</blockquote>
+<p>Aquí se evidencia que el problema afecta a dos personas: el adulto mayor, que necesita apoyo para tomar sus medicamentos, y el cuidador, que asume una carga emocional y de tiempo considerable. La evidencia disponible indica que la falta de adherencia en personas mayores se asocia con mayor riesgo de hospitalización y peores resultados clínicos (WHO, 2003a).</p>
+<h3>1.2 Frecuencia e impacto</h3>
+<p>En los casos analizados, la situación se presenta todos los días, con dos o más tomas de medicamentos. Cuando una persona maneja antihipertensivos, anticoagulantes o medicamentos para la diabetes, una omisión, un retraso o una duplicación accidental puede tener consecuencias serias.</p>
+<p>La polifarmacia, entendida como el uso de varios medicamentos de forma simultánea, aumenta la posibilidad de errores, interacciones y dificultades para seguir el tratamiento. Además, la complejidad del esquema, los problemas de almacenamiento y la presencia de varias enfermedades están asociados con una menor adherencia en adultos mayores (Smaje et al., 2018).</p>
+<p>Aunque no es posible calcular con precisión el costo económico de cada caso sin datos institucionales, sí es claro que una hospitalización evitable implica gastos para el sistema de salud, pérdida de tiempo para la familia y deterioro de la autonomía del adulto mayor. Por eso, una herramienta que ayude a reducir confusiones y olvidos puede tener un impacto tanto humano como económico.</p>
+<h2>2. Estado del arte y soluciones existentes</h2>
+<p>Antes de plantear MediSync Senior, el equipo revisó algunas alternativas que actualmente se utilizan para apoyar la toma de medicamentos. El objetivo no era copiar una solución existente, sino identificar qué resuelven bien y qué dejan por fuera.</p>
+<p class="caption">Tabla 1</p>
+<p style="text-align:center;">Comparación entre soluciones existentes y MediSync Senior</p>
+<table>
+<tr>
+<td>Solución</td>
+<td>Aportes</td>
+<td>Limitaciones identificadas</td>
+<td>Costo</td>
+</tr>
+<tr>
+<td>Medisafe</td>
+<td>Permite programar recordatorios, registrar medicamentos y añadir un “Medfriend”, es decir, un familiar o cuidador que recibe avisos si se omite una dosis (Medisafe, s. f.-a, s. f.-b).</td>
+<td>Su interfaz puede resultar densa para personas con baja visión, poca experiencia digital o dificultades de lectura. No resuelve directamente la identificación visual del empaque real.</td>
+<td>Gratuita, con funciones adicionales en la versión Premium.</td>
+</tr>
+<tr>
+<td>MyTherapy</td>
+<td>Ofrece recordatorios de medicamentos, registro de tomas y seguimiento de síntomas o medidas de salud (MyTherapy, s. f.).</td>
+<td>Depende principalmente de texto en pantalla. No incorpora de forma central una identificación visual del medicamento ni una interfaz tan simplificada para adultos mayores.</td>
+<td>Gratuita.</td>
+</tr>
+<tr>
+<td>Pastilleros semanales</td>
+<td>Son económicos, fáciles de entender y no requieren internet ni conocimientos tecnológicos.</td>
+<td>No avisan por sí solos si la persona olvidó una toma. Requieren que alguien los organice y pueden generar confusiones si las pastillas se cambian de compartimento.</td>
+<td>Aproximadamente entre $15.000 y $30.000 COP.</td>
+</tr>
+</table>
+<p class="caption">Nota. Elaboración propia a partir de la revisión de las soluciones y de las pruebas iniciales realizadas por el equipo.</p>
+<p>La comparación permite ver que las aplicaciones digitales son útiles para recordar, pero muchas veces no fueron diseñadas pensando primero en una persona mayor con presbicia, poca familiaridad con los teléfonos o dificultades para leer textos pequeños. Estudios sobre herramientas digitales de medicación para personas mayores señalan que los usuarios valoran la navegación simple, el texto grande, la personalización y el apoyo por audio (Smaje et al., 2018). Ese es precisamente el espacio donde puede aportar MediSync Senior.</p>
+<h2>3. Propuesta de solución: MediSync Senior</h2>
+<p>MediSync Senior es un prototipo digital orientado a hacer más clara y segura la toma de medicamentos para adultos mayores, sin dejar de lado el acompañamiento del cuidador. La idea central es sencilla: en lugar de mostrar solo nombres largos y horarios difíciles de recordar, la aplicación busca que el medicamento sea reconocible visualmente y que la persona reciba recordatorios claros.</p>
+<h3>3.1 Componentes principales</h3>
+<p>Reconocimiento visual de empaques. El cuidador puede tomar una fotografía de la caja o del medicamento. Mediante visión artificial y OCR, el sistema busca extraer información relevante del empaque, como el nombre, la dosis o el horario. En la vista del adulto mayor, el medicamento se presenta como una tarjeta grande, con colores y elementos visuales que facilitan reconocerlo.</p>
+<p>Interfaz accesible. La Vista Mamá utiliza botones grandes, poco texto, contrastes claros y una navegación mínima. La intención es que la persona no tenga que “aprender” una aplicación complicada, sino que pueda entender qué medicamento le corresponde y confirmar que ya lo tomó.</p>
+<p>Recordatorios por voz. El sistema incorpora síntesis de voz para leer la información en un tono claro y pausado. Esto es importante porque muchas personas mayores tienen dificultades visuales o prefieren recibir la información escuchándola.</p>
+<p>Vista del cuidador. En la Vista Cuidador, el familiar puede configurar los medicamentos, revisar el cumplimiento y recibir alertas. Esta parte es fundamental, porque el apoyo familiar es uno de los factores que influye en la adherencia al tratamiento (WHO, 2003b).</p>
+<p>Recordatorio de citas médicas. Además de los medicamentos, la aplicación permite programar citas con anticipación. El cuidador recibe un aviso 24 horas antes y el adulto mayor recibe una notificación más sencilla en su dispositivo.</p>
+<h3>3.2 Prototipo desarrollado</h3>
+<p>El prototipo se construyó como una aplicación web utilizando HTML5, Tailwind CSS y JavaScript. Esta elección permitió desarrollar una interfaz ligera, adaptable a diferentes tamaños de pantalla y fácil de mostrar en una demostración.</p>
+<p>El flujo básico es el siguiente:</p>
+<ol>
+<li>El cuidador registra el medicamento y sube una fotografía del empaque.</li>
+<li>El sistema organiza la información en una tarjeta visual para el adulto mayor.</li>
+<li>La aplicación envía recordatorios en los horarios configurados.</li>
+<li>El adulto mayor confirma la toma mediante un botón grande.</li>
+<li>Si no hay confirmación, el cuidador recibe una alerta.</li>
+</ol>
+<h3>3.3 Métricas de impacto esperadas</h3>
+<p>Como todavía se trata de un prototipo, las siguientes cifras no deben entenderse como resultados definitivos, sino como metas y estimaciones iniciales del equipo:</p>
+<ul>
+<li>Reducir las confusiones entre medicamentos causadas por empaques parecidos o letras pequeñas.</li>
+<li>Disminuir el tiempo que el cuidador dedica a llamadas, verificaciones y organización semanal de pastilleros.</li>
+<li>Aumentar la percepción de seguridad del adulto mayor al momento de tomar sus medicamentos.</li>
+<li>Mejorar el registro de tomas realizadas, omitidas o retrasadas.</li>
+</ul>
+<p>Estas metas deberán validarse más adelante con pruebas de usabilidad y un periodo de uso real con usuarios mayores. La literatura reciente señala que las soluciones tecnológicas pueden apoyar la adherencia, pero su efecto depende de que sean accesibles, fáciles de usar y diseñadas con la participación de las personas mayores (Smaje et al., 2018).</p>
+<h2>4. Herramientas digitales e inteligencia artificial</h2>
+<p>Durante el desarrollo del proyecto se utilizaron varias herramientas aprendidas o reforzadas en la asignatura:</p>
+<ul>
+<li>Google Drive y Google Docs: para el trabajo colaborativo, la escritura del documento y el control de versiones.</li>
+<li>HTML5 y Tailwind CSS: para el diseño y la maquetación del prototipo web.</li>
+<li>JavaScript: para la lógica básica de la interfaz y la simulación de recordatorios.</li>
+<li>CapCut y Clipchamp: para la edición del video pitch.</li>
+<li>GitHub Pages y Canva Sites: para la publicación y organización de los entregables.</li>
+</ul>
+<h3>4.1 Declaración sobre el uso de inteligencia artificial</h3>
+<p>El equipo declara que utilizó Gemini 3 Flash de Google como herramienta de apoyo durante el proceso académico. Su uso se limitó a:</p>
+<ol>
+<li>Revisar la redacción, la ortografía y el formato de citas según las normas APA 7.ª edición.</li>
+<li>Apoyar la organización inicial de ideas para el guion del video pitch.</li>
+<li>Sugerir mejoras de estructura en fragmentos del prototipo desarrollado con Tailwind CSS.</li>
+</ol>
+<p>La investigación de campo, las entrevistas, el planteamiento del problema, las decisiones de diseño, la lógica del prototipo y las conclusiones del proyecto fueron realizadas por los autores: Gustavo Alejandro Giraldo Arce, Santiago López Vélez y Brayan Alejandro Ortiz Calle.</p>
+<h2>Referencias</h2>
+<p>Medisafe. (s. f.-a). Download the app: Medication management and reminders. https://medisafe.com/download-the-app</p>
+<p>Medisafe. (s. f.-b). For patients: Medication adherence support. https://medisafe.com/solutions/for-patients</p>
+<p>MyTherapy. (s. f.). Medication reminder and pill tracker app. https://edit.mytherapyapp.com/</p>
+<p>Smaje, A., Weston-Clark, M., Raj, R., Orlu, M., Davis, D., &amp; Rawle, M. (2018). Factors associated with medication adherence in older patients: A systematic review. Aging Medicine, 1(3), 254–266. https://doi.org/10.1002/agm2.12045</p>
+<p>World Health Organization. (2003a). Adherence to long-term therapies: Evidence for action. https://iris.who.int/handle/10665/42682</p>
+<p>World Health Organization. (2003b, July 1). Failure to take prescribed medicine for chronic diseases is a massive worldwide problem. https://www.who.int/news/item/01-07-2003-failure-to-take-prescribed-medicine-for-chronic-diseases-is-a-massive-world-wide-problem</p>
+</body>
+</html>
