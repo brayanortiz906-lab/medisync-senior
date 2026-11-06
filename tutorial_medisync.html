@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediSync Senior — Tutorial de la App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #030712; color: #e2e8f0; }
+    .glass { background: rgba(15,23,42,0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+    .phone-frame { max-width: 300px; }
+    .step-card { transition: all 0.3s ease; }
+    .step-card:hover { transform: translateY(-2px); border-color: rgba(59,130,246,0.4); }
+    .mock-btn { transition: all 0.2s ease; }
+    .mock-btn:hover { transform: scale(1.05); }
+    .number-badge { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 12px; }
+  </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8">
+
+  <!-- HEADER -->
+  <header class="text-center mb-10 max-w-3xl mx-auto">
+    <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-blue-600 to-emerald-500 flex items-center justify-center shadow-xl mb-4">
+      <i class="fa-solid fa-heart-pulse text-white text-3xl"></i>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-black text-white">Tutorial de MediSync Senior</h1>
+    <p class="text-sm text-slate-400 mt-2">Guía paso a paso de cada botón y funcionalidad de la app</p>
+  </header>
+
+  <div class="max-w-5xl mx-auto space-y-12">
+
+    <!-- ===================== VISTA MAMÁ ===================== -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center">
+          <i class="fa-solid fa-user text-white"></i>
+        </div>
+        <h2 class="text-2xl font-black text-white">Vista Mamá (María)</h2>
+      </div>
+      <p class="text-sm text-slate-400 mb-6">La vista de María está diseñada para ser simple: foto gigante, voz en alto y un solo botón verde.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Botón 1: Ya me la tomé -->
+        <div class="step-card glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="number-badge bg-emerald-600 text-white">1</span>
+            <h3 class="text-lg font-black text-white">Botón "¡YA ME LA TOMÉ!"</h3>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-4 mb-4 flex justify-center">
+            <button class="mock-btn w-full max-w-xs bg-emerald-600 hover:bg-emerald-500 text-white font-black py-3 rounded-xl text-sm transition active:scale-95">
+              <i class="fa-solid fa-check mr-2"></i> ¡YA ME LA TOMÉ!
+            </button>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-emerald-400">Qué hace:</strong> Confirma que María tomó su medicina. Al oprimirlo, la app registra la hora exacta y envía la confirmación a Santiago en tiempo real.
+          </p>
+          <p class="text-xs text-slate-500 mt-2">
+            <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> Solo se puede oprimir una vez por medicina. Después se bloquea y muestra "¡DOSIS REGISTRADA!".
+          </p>
+        </div>
+
+        <!-- Botón 2: Voz -->
+        <div class="step-card glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="number-badge bg-purple-600 text-white">2</span>
+            <h3 class="text-lg font-black text-white">Asistente por voz</h3>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-4 mb-4 flex justify-center">
+            <button class="mock-btn w-12 h-12 rounded-xl bg-indigo-600/30 border border-indigo-500/30 text-indigo-300 flex items-center justify-center text-lg hover:bg-indigo-600/50 transition">
+              <i class="fa-solid fa-microphone"></i>
+            </button>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-purple-400">Qué hace:</strong> Al oprimir el micrófono, la app le dice a María qué medicina debe tomar, la dosis y la hora. También le indica si ya la tomó o no.
+          </p>
+          <p class="text-xs text-slate-500 mt-2">
+            <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> Usa la Web Speech API del navegador. Funciona en español (es-CO).
+          </p>
+        </div>
+
+        <!-- Botón 3: Llamar -->
+        <div class="step-card glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="number-badge bg-rose-600 text-white">3</span>
+            <h3 class="text-lg font-black text-white">Botón "Llamar a Santiago"</h3>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-4 mb-4 flex justify-center">
+            <button class="mock-btn flex-1 max-w-xs bg-rose-600/20 border border-rose-500/30 text-rose-300 text-sm font-bold py-2 rounded-lg hover:bg-rose-600/30 transition">
+              <i class="fa-solid fa-phone mr-1"></i> Llamar a Santiago
+            </button>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-rose-400">Qué hace:</strong> Permite a María llamar directamente a Santiago si tiene alguna duda o emergencia. Un toque y se inicia la llamada.
+          </p>
+          <p class="text-xs text-slate-500 mt-2">
+            <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> No más buscar el número en la agenda.
+          </p>
+        </div>
+
+        <!-- Botón 4: Emergencia -->
+        <div class="step-card glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="number-badge bg-amber-600 text-white">4</span>
+            <h3 class="text-lg font-black text-white">Botón "Emergencia"</h3>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-4 mb-4 flex justify-center">
+            <button class="mock-btn flex-1 max-w-xs bg-amber-600/20 border border-amber-500/30 text-amber-300 text-sm font-bold py-2 rounded-lg hover:bg-amber-600/30 transition">
+              <i class="fa-solid fa-triangle-exclamation mr-1"></i> Emergencia
+            </button>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-amber-400">Qué hace:</strong> Envía una alerta de emergencia a Santiago y a los servicios médicos. Para situaciones urgentes (dolor, mareo, caída).
+          </p>
+          <p class="text-xs text-slate-500 mt-2">
+            <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> Botón grande y visible para fácil acceso.
+          </p>
+        </div>
+
+        <!-- Componente 5: Foto de la caja -->
+        <div class="step-card glass rounded-2xl p-6 md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="number-badge bg-cyan-600 text-white">5</span>
+            <h3 class="text-lg font-black text-white">Foto gigante de la caja</h3>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-4 mb-4 flex justify-center">
+            <div class="w-48 h-32 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-700">
+              <i class="fa-solid fa-image text-slate-500 text-3xl"></i>
+              <span class="text-[10px] text-slate-500 ml-2">Foto de la caja (tamaño gigante)</span>
+            </div>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-cyan-400">Qué hace:</strong> Muestra la foto real de la caja del medicamento en tamaño grande. María puede comparar visualmente la caja real con la foto en pantalla.
+          </p>
+          <p class="text-xs text-slate-500 mt-2">
+            <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> Ideal para adultos mayores con visión reducida o que confunden cajas similares.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VISTA CUIDADOR ===================== -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center">
+          <i class="fa-solid fa-user-shield text-white"></i>
+        </div>
+        <h2 class="text-2xl font-black text-white">Vista Cuidador (Santiago)</h2>
+      </div>
+      <p class="text-sm text-slate-400 mb-6">La vista de Santiago le permite monitorear, enviar recordatorios y ver el historial de María.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Botón 1: Recordatorio -->
+        <div class="step-card glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="number-badge bg-blue-600 text-white">1</span>
+            <h3 class="text-lg font-black text-white">Botón "Recordatorio"</h3>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-4 mb-4 flex justify-center">
+            <button class="mock-btn flex-1 max-w-xs bg-blue-600/30 border border-blue-500/30 text-blue-300 text-sm font-bold py-2 rounded-lg hover:bg-blue-600/50 transition">
+              <i class="fa-solid fa-volume-high mr-1"></i> Recordatorio
+            </button>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-blue-400">Qué hace:</strong> Envía un recordatorio de voz a María: "Es hora de tomar tu medicina". Útil cuando Santiago nota que María no ha tomado su dosis.
+          </p>
+          <p class="text-xs text-slate-500 mt-2">
+            <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> El recordatorio se reproduce en voz alta en el celular de María.
+          </p>
+        </div>
+
+        <!-- Botón 2: Llamar -->
+        <div class="step-card glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="number-badge bg-rose-600 text-white">2</span>
+            <h3 class="text-lg font-black text-white">Botón "Llamar"</h3>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-4 mb-4 flex justify-center">
+            <button class="mock-btn flex-1 max-w-xs bg-rose-600/30 border border-rose-500/30 text-rose-300 text-sm font-bold py-2 rounded-lg hover:bg-rose-600/50 transition">
+              <i class="fa-solid fa-phone mr-1"></i> Llamar
+            </button>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-rose-400">Qué hace:</strong> Llama directamente a María para verificar cómo está o resolver dudas sobre la medicina.
+          </p>
+          <p class="text-xs text-slate-500 mt-2">
+            <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> Comunicación directa sin salir de la app.
+          </p>
+        </div>
+
+        <!-- Botón 3: Historial -->
+        <div class="step-card glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="number-badge bg-indigo-600 text-white">3</span>
+            <h3 class="text-lg font-black text-white">Botón "Historial"</h3>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-4 mb-4 flex justify-center">
+            <button class="mock-btn flex-1 max-w-xs bg-indigo-600/30 border border-indigo-500/30 text-indigo-300 text-sm font-bold py-2 rounded-lg hover:bg-indigo-600/50 transition">
+              <i class="fa-solid fa-chart-line mr-1"></i> Historial
+            </button>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-indigo-400">Qué hace:</strong> Muestra el historial completo de tomas de María: fechas, horas, medicinas tomadas y porcentaje de adherencia.
+          </p>
+          <p class="text-xs text-slate-500 mt-2">
+            <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> Útil para llevar al médico en la próxima cita.
+          </p>
+        </div>
+
+        <!-- Botón 4: Agregar -->
+        <div class="step-card glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="number-badge bg-emerald-600 text-white">4</span>
+            <h3 class="text-lg font-black text-white">Botón "Agregar"</h3>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-4 mb-4 flex justify-center">
+            <button class="mock-btn flex-1 max-w-xs bg-emerald-600/30 border border-emerald-500/30 text-emerald-300 text-sm font-bold py-2 rounded-lg hover:bg-emerald-600/50 transition">
+              <i class="fa-solid fa-plus mr-1"></i> Agregar
+            </button>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-emerald-400">Qué hace:</strong> Permite a Santiago agregar nuevos medicamentos a la lista de María: nombre, dosis, horario y foto de la caja.
+          </p>
+          <p class="text-xs text-slate-500 mt-2">
+            <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> Escanea la caja con la cámara y la IA extrae los datos.
+          </p>
+        </div>
+
+        <!-- Botón 5: Reiniciar -->
+        <div class="step-card glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="number-badge bg-slate-600 text-white">5</span>
+            <h3 class="text-lg font-black text-white">Botón "Reiniciar demo"</h3>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-4 mb-4 flex justify-center">
+            <button class="mock-btn w-full max-w-xs bg-slate-700 hover:bg-slate-600 text-white font-bold py-2 rounded-xl text-xs transition">
+              <i class="fa-solid fa-rotate mr-1"></i> Reiniciar demo
+            </button>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-slate-400">Qué hace:</strong> Reinicia toda la demo: limpia las tomas registradas, restaura los estados iniciales y vuelve a empezar.
+          </p>
+          <p class="text-xs text-slate-500 mt-2">
+            <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> Solo para demostración. En la app real, los datos se guardan.
+          </p>
+        </div>
+
+        <!-- Componente 6: Anillo de adherencia -->
+        <div class="step-card glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="number-badge bg-teal-600 text-white">6</span>
+            <h3 class="text-lg font-black text-white">Anillo de adherencia</h3>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-4 mb-4 flex justify-center">
+            <svg width="64" height="64" viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="20" fill="none" stroke="#1e293b" stroke-width="4"/>
+              <circle cx="24" cy="24" r="20" fill="none" stroke="#10b981" stroke-width="4" stroke-dasharray="125.6" stroke-dashoffset="62.8" stroke-linecap="round" transform="rotate(-90 24 24)"/>
+              <text x="24" y="28" text-anchor="middle" fill="white" font-size="10" font-weight="bold">50%</text>
+            </svg>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-teal-400">Qué hace:</strong> Muestra visualmente el porcentaje de adherencia del día. Verde = bien, ámbar = regular, rojo = mal.
+          </p>
+          <p class="text-xs text-slate-500 mt-2">
+            <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> Se actualiza en tiempo real cuando María toma una dosis.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== COMPONENTES COMUNES ===================== -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-600 to-orange-600 flex items-center justify-center">
+          <i class="fa-solid fa-puzzle-piece text-white"></i>
+        </div>
+        <h2 class="text-2xl font-black text-white">Componentes comunes</h2>
+      </div>
+      <p class="text-sm text-slate-400 mb-6">Elementos que aparecen en ambas vistas.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Timeline -->
+        <div class="step-card glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="number-badge bg-blue-600 text-white">1</span>
+            <h3 class="text-lg font-black text-white">Timeline de tomas</h3>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-4 mb-4 space-y-2">
+            <div class="flex items-center gap-2">
+              <div class="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center"><i class="fa-solid fa-check text-white text-[8px]"></i></div>
+              <span class="text-[11px] text-white">Losartán 50mg — 8:00 AM ✅</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-5 h-5 rounded-full bg-slate-700 flex items-center justify-center"><i class="fa-solid fa-clock text-slate-500 text-[8px]"></i></div>
+              <span class="text-[11px] text-slate-400">Metformina 850mg — 12:00 PM ⏳</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-5 h-5 rounded-full bg-slate-700 flex items-center justify-center"><i class="fa-solid fa-clock text-slate-500 text-[8px]"></i></div>
+              <span class="text-[11px] text-slate-400">Atorvastatina 20mg — 8:00 PM ⏳</span>
+            </div>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-blue-400">Qué hace:</strong> Muestra todas las medicinas del día en orden cronológico con su estado (tomada/pendiente).
+          </p>
+        </div>
+
+        <!-- Lista de medicamentos -->
+        <div class="step-card glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="number-badge bg-emerald-600 text-white">2</span>
+            <h3 class="text-lg font-black text-white">Lista de medicamentos</h3>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-4 mb-4 space-y-2">
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-blue-500/10 border border-blue-500/30">
+              <i class="fa-solid fa-pills text-blue-400 text-xs"></i>
+              <span class="text-[11px] text-white">Losartán 50mg — 8:00 AM</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-slate-800/50 border border-slate-700">
+              <i class="fa-solid fa-pills text-emerald-400 text-xs"></i>
+              <span class="text-[11px] text-white">Metformina 850mg — 12:00 PM</span>
+            </div>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-emerald-400">Qué hace:</strong> Lista todas las medicinas de María con nombre, dosis y horario. Al hacer click en una, se selecciona para confirmar la toma.
+          </p>
+        </div>
+
+        <!-- Citas médicas -->
+        <div class="step-card glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="number-badge bg-indigo-600 text-white">3</span>
+            <h3 class="text-lg font-black text-white">Citas médicas</h3>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-4 mb-4 space-y-2">
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-slate-800/50 border border-slate-700">
+              <i class="fa-solid fa-calendar text-indigo-400 text-xs"></i>
+              <span class="text-[11px] text-white">Cardiología — 10 Nov, 10:00 AM</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-slate-800/50 border border-slate-700">
+              <i class="fa-solid fa-calendar text-indigo-400 text-xs"></i>
+              <span class="text-[11px] text-white">Endocrinología — 15 Nov, 2:00 PM</span>
+            </div>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-indigo-400">Qué hace:</strong> Muestra las próximas citas médicas de María con fecha, hora y especialidad.
+          </p>
+        </div>
+
+        <!-- Toggle de voz -->
+        <div class="step-card glass rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="number-badge bg-purple-600 text-white">4</span>
+            <h3 class="text-lg font-black text-white">Toggle de voz</h3>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-4 mb-4 flex justify-center gap-4">
+            <button class="mock-btn w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400">
+              <i class="fa-solid fa-volume-high"></i>
+            </button>
+            <button class="mock-btn w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400">
+              <i class="fa-solid fa-volume-xmark"></i>
+            </button>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <strong class="text-purple-400">Qué hace:</strong> Activa o desactiva la voz de la app. Cuando está activa, las instrucciones se reproducen en voz alta. Cuando está desactivada, solo se muestra texto.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FLUJO COMPLETO ===================== -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center">
+          <i class="fa-solid fa-route text-white"></i>
+        </div>
+        <h2 class="text-2xl font-black text-white">Flujo completo de una toma</h2>
+      </div>
+      <p class="text-sm text-slate-400 mb-6">Así es el recorrido completo desde que Santiago escanea la caja hasta que recibe la confirmación.</p>
+
+      <div class="space-y-4">
+        <div class="glass rounded-2xl p-5 flex items-center gap-4">
+          <span class="number-badge bg-blue-600 text-white flex-shrink-0">1</span>
+          <div>
+            <p class="font-bold text-white text-sm">Santiago escanea la caja</p>
+            <p class="text-xs text-slate-400">La IA reconoce el medicamento y extrae los datos automáticamente.</p>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-5 flex items-center gap-4">
+          <span class="number-badge bg-blue-600 text-white flex-shrink-0">2</span>
+          <div>
+            <p class="font-bold text-white text-sm">La app envía la info a Mamá</p>
+            <p class="text-xs text-slate-400">Foto gigante de la caja + instrucciones de voz en el celular de María.</p>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-5 flex items-center gap-4">
+          <span class="number-badge bg-emerald-600 text-white flex-shrink-0">3</span>
+          <div>
+            <p class="font-bold text-white text-sm">María oprime "¡YA ME LA TOMÉ!"</p>
+            <p class="text-xs text-slate-400">Un solo botón verde. Sin menús, sin pasos extras.</p>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-5 flex items-center gap-4">
+          <span class="number-badge bg-emerald-600 text-white flex-shrink-0">4</span>
+          <div>
+            <p class="font-bold text-white text-sm">Santiago recibe confirmación</p>
+            <p class="text-xs text-slate-400">Notificación en tiempo real + actualización del historial y adherencia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-center text-[10px] text-slate-500 mt-10 pb-6">
+      <p>MediSync Senior · Tutorial de la app · Institución Universitaria Pascual Bravo · TICs 2026</p>
+      <p class="mt-2">
+        <a href="index.html" class="text-blue-400 hover:text-blue-300">← Volver al portal</a> ·
+        <a href="prototipo_simple.html" class="text-blue-400 hover:text-blue-300">Probar prototipo →</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

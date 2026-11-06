@@ -13,6 +13,7 @@
 | **Landing Page** | [Abrir](https://brayanortiz906-lab.github.io/medisync-senior/landing_medisync_senior.html) |
 | **Prototipo completo** | [Abrir](https://brayanortiz906-lab.github.io/medisync-senior/interfaz_medisync_senior.html) |
 | **Prototipo simplificado** | [Abrir](https://brayanortiz906-lab.github.io/medisync-senior/prototipo_simple.html) |
+| **Tutorial de la app** | [Abrir](https://brayanortiz906-lab.github.io/medisync-senior/tutorial_medisync.html) |
 | **Ensayo APA 7** | [Abrir](https://brayanortiz906-lab.github.io/medisync-senior/ensayo_medisync_senior.html) |
 
 ---
@@ -51,6 +52,7 @@ medisync-senior/
 ├── landing_medisync_senior.html        # Landing page completa
 ├── interfaz_medisync_senior.html       # Prototipo funcional (Firebase + modo local)
 ├── prototipo_simple.html               # Prototipo simplificado (ambas vistas, fácil de entender)
+├── tutorial_medisync.html              # Tutorial de la app (explica cada botón y funcionalidad)
 ├── ensayo_medisync_senior.html         # Ensayo académico APA 7
 ├── MediSync_Senior_Ensayo_APA7.docx    # Ensayo en Word (APA 7)
 ├── FIREBASE_SETUP.md                   # Guía de configuración de Firebase
