@@ -5,24 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MediSync Senior — Adherencia médica para adultos mayores</title>
   <meta name="description" content="MediSync Senior: la app accesible con doble vista (Mamá y Cuidador) que muestra la foto real de la caja, habla en voz alta y sincroniza las tomas en tiempo real.">
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Plus Jakarta Sans','Inter','system-ui','sans-serif'] },
-          colors: {
-            brand: { blue:'#2563eb', indigo:'#4f46e5', emerald:'#10b981', slate:'#0f172a' }
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Estilos self-contained (sin CDN) -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/fontawesome/all.min.css">
+  <style>
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+  </style>
   <style>
     html { scroll-behavior: smooth; }
     html, body {
@@ -464,8 +452,11 @@
             <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Calendario, gráficos y citas médicas</li>
           </ul>
           <div class="mt-8 flex flex-col sm:flex-row gap-3">
-            <a href="interfaz_medisync_senior.html" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-xl shadow-blue-600/30 transition">
+            <a href="prototipo_simple.html" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-xl shadow-blue-600/30 transition">
               <i class="fa-solid fa-up-right-from-square"></i> Abrir app a pantalla completa
+            </a>
+            <a href="interfaz_medisync_senior.html" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 glass hover:bg-white/10 text-white font-bold px-6 py-3.5 rounded-xl border border-white/15 transition">
+              <i class="fa-solid fa-globe"></i> Prototipo completo (requiere conexión)
             </a>
             <button onclick="document.getElementById('protoFrame').scrollIntoView({behavior:'smooth',block:'center'})" class="inline-flex items-center justify-center gap-2 glass hover:bg-white/10 text-white font-bold px-6 py-3.5 rounded-xl border border-white/15 transition">
               <i class="fa-solid fa-eye"></i> Ver incrustado
@@ -480,10 +471,10 @@
               <span class="w-3 h-3 rounded-full bg-rose-500"></span>
               <span class="w-3 h-3 rounded-full bg-amber-400"></span>
               <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-              <span class="ml-2 text-[11px] font-mono text-slate-400 truncate">interfaz_medisync_senior.html</span>
+              <span class="ml-2 text-[11px] font-mono text-slate-400 truncate">prototipo_simple.html</span>
             </div>
             <div class="relative bg-slate-950 rounded-2xl overflow-hidden" style="height: 640px;">
-              <iframe id="protoFrame" src="interfaz_medisync_senior.html" class="w-full h-full border-0" title="Prototipo MediSync Senior" loading="lazy"></iframe>
+              <iframe id="protoFrame" src="prototipo_simple.html" class="w-full h-full border-0" title="Prototipo MediSync Senior" loading="lazy"></iframe>
             </div>
           </div>
         </div>
