@@ -152,3 +152,11 @@ cd android && ./gradlew assembleDebug
 ## 📝 Licencia
 
 Proyecto académico — Institución Universitaria Pascual Bravo, 2026.
+
+## Descarga APK (Android)
+
+Descarga la última versión desde GitHub Releases:
+https://github.com/brayanortiz906-lab/medisync-senior/releases/latest
+
+O directamente:
+https://github.com/brayanortiz906-lab/medisync-senior/releases/download/v1.1.0/MediSync_Senior.apk
