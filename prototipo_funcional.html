@@ -1086,6 +1086,8 @@
         // ================= SELECCIÓN DE ROL Y VINCULACIÓN =================
         const ROLE_KEY = 'medisync_role';
         const LINK_KEY = 'medisync_link_code';
+        const urlParams = new URLSearchParams(window.location.search);
+        const FORCED_ROLE = urlParams.get('role'); // 'senior' o 'caregiver' (modo demo sin codigo)
         let bc = null;
         try { bc = new BroadcastChannel('medisync_channel'); } catch(e) { bc = null; }
 
@@ -1424,6 +1426,15 @@
 
         // Al cargar, verificar si ya se seleccionó rol
         window.addEventListener('DOMContentLoaded', function() {
+            // Modo demo: si hay ?role= senior/caregiver en la URL, forzar rol sin overlay ni codigo
+            if (FORCED_ROLE === 'senior' || FORCED_ROLE === 'caregiver') {
+                document.getElementById('role-overlay').classList.add('hidden');
+                const tabBar = document.querySelector('.flex.bg-slate-900\\/90');
+                if (tabBar) tabBar.style.display = 'none';
+                if (FORCED_ROLE === 'senior') switchMode('senior');
+                else switchMode('caregiver');
+                return;
+            }
             const role = localStorage.getItem(ROLE_KEY);
             const linked = localStorage.getItem('medisync_linked');
             const code = localStorage.getItem(LINK_KEY);
@@ -1467,6 +1478,7 @@
   <a href="tutorial_medisync.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Tutorial</a>
   <a href="prototipo_simple.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Prototipo</a>
   <a href="prototipo_funcional.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Funcional</a>
+  <a href="prototipo_doble.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Vista Doble</a>
   <a href="ensayo_medisync_senior.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Ensayo</a>
 </div>
 <script>

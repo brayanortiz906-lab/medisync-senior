@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediSync Senior - Vista Doble (Mamá y Cuidador)</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/fontawesome/all.min.css">
+  <style>
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: #030712; color: #e2e8f0; margin: 0; }
+    .doble-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px; height: calc(100vh - 60px); }
+    @media (max-width: 768px) { .doble-grid { grid-template-columns: 1fr; height: auto; } .doble-grid iframe { height: 640px; } }
+    .doble-grid iframe { width: 100%; height: 100%; border: 0; border-radius: 16px; background: #0a0e1a; }
+    .doble-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: rgba(15,23,42,0.8); border-bottom: 1px solid rgba(255,255,255,0.1); }
+  </style>
+</head>
+<body>
+  <!-- NAV DRAWER -->
+  <div id="navDrawerBtn" style="position:fixed;top:60px;right:12px;z-index:9999;width:44px;height:44px;border-radius:12px;background:rgba(15,23,42,0.9);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(8px);">
+    <i class="fa-solid fa-bars" style="color:#e2e8f0;font-size:18px;"></i>
+  </div>
+  <div id="navDrawer" style="position:fixed;top:0;right:-280px;width:260px;height:100vh;background:rgba(10,14,26,0.98);border-left:1px solid rgba(255,255,255,0.1);z-index:10000;padding:80px 16px 16px;transition:right 0.3s ease;backdrop-filter:blur(20px);">
+    <a href="index.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Inicio</a>
+    <a href="landing_medisync_senior.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Landing</a>
+    <a href="tutorial_medisync.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Tutorial</a>
+    <a href="prototipo_simple.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Prototipo</a>
+    <a href="prototipo_funcional.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Funcional</a>
+    <a href="prototipo_doble.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Vista Doble</a>
+    <a href="ensayo_medisync_senior.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Ensayo</a>
+  </div>
+  <script>document.getElementById('navDrawerBtn').onclick=()=>{const d=document.getElementById('navDrawer');d.style.right=d.style.right==='0px'?'-280px':'0px';};</script>
+
+  <div class="doble-header">
+    <div class="flex items-center gap-2">
+      <i class="fa-solid fa-heart-pulse text-emerald-400"></i>
+      <span class="font-black">MediSync Senior — Vista Doble (sin código de acceso)</span>
+    </div>
+    <span class="text-xs text-slate-400">Mamá y Cuidador lado a lado</span>
+  </div>
+  <div class="doble-grid">
+    <div class="flex flex-col gap-2">
+      <div class="text-center text-sm font-bold text-blue-400">Vista Mamá (María)</div>
+      <iframe src="prototipo_funcional.html?role=senior" title="Vista Mamá"></iframe>
+    </div>
+    <div class="flex flex-col gap-2">
+      <div class="text-center text-sm font-bold text-emerald-400">Vista Cuidador (Santiago)</div>
+      <iframe src="prototipo_funcional.html?role=caregiver" title="Vista Cuidador"></iframe>
+    </div>
+  </div>
+
+  <!-- SISTEMA DE VOZ (visible y facil de quitar) -->
+  <style>
+    #voiceFab{position:fixed;bottom:20px;left:20px;z-index:9998;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#10b981);color:#fff;border:none;box-shadow:0 8px 24px rgba(99,102,241,.4);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform .2s;}
+    #voiceFab:hover{transform:scale(1.08);}
+    #voiceFab.off{background:linear-gradient(135deg,#64748b,#334155);}
+    #voicePanel{position:fixed;bottom:84px;left:20px;z-index:9999;width:300px;max-width:calc(100vw - 40px);background:#0f172a;color:#e2e8f0;border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:16px;box-shadow:0 20px 60px rgba(0,0,0,.5);display:none;font-family:system-ui,sans-serif;}
+    #voicePanel.open{display:block;}
+    #voicePanel h4{margin:0 0 12px;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:space-between;}
+    #voicePanel .row{display:flex;align-items:center;justify-content:space-between;margin:8px 0;font-size:13px;}
+    #voicePanel .row input[type=range]{width:140px;}
+    #voicePanel .btn{padding:8px 12px;border-radius:8px;border:none;cursor:pointer;font-weight:700;font-size:12px;}
+    #voicePanel .btn-primary{background:#6366f1;color:#fff;}
+    #voicePanel .btn-ghost{background:rgba(255,255,255,.1);color:#e2e8f0;}
+    #voicePanel .toggle{width:40px;height:22px;border-radius:11px;background:#334155;position:relative;cursor:pointer;transition:background .2s;}
+    #voicePanel .toggle.on{background:#10b981;}
+    #voicePanel .toggle::after{content:'';position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;transition:left .2s;}
+    #voicePanel .toggle.on::after{left:20px;}
+  </style>
+  <button id="voiceFab" onclick="document.getElementById('voicePanel').classList.toggle('open')" title="Control de voz">
+    <i class="fa-solid fa-volume-high"></i>
+  </button>
+  <div id="voicePanel">
+    <h4><span><i class="fa-solid fa-microphone-lines mr-2"></i>Control de Voz</span>
+      <button class="btn btn-ghost" onclick="document.getElementById('voicePanel').classList.remove('open')" style="padding:4px 8px;"><i class="fa-solid fa-xmark"></i></button>
+    </h4>
+    <div class="row"><span>Voz activada</span><div id="voiceToggle" class="toggle on" onclick="this.classList.toggle('on');localStorage.setItem('ms_voice_enabled',this.classList.contains('on'))"></div></div>
+    <p style="font-size:10px;color:#94a3b8;margin:8px 0 0;">La voz se reproduce en español. Desactívala si no la necesitas.</p>
+  </div>
+</body>
+</html>
