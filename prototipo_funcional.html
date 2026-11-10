@@ -56,8 +56,38 @@
             box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.4);
         }
     </style>
+<!-- DEMO MODE: override localStorage so nothing persists -->
+<script>
+(function(){
+  var DEMO_KEY='ms_demo_mode';
+  window.demoMode = (localStorage.getItem(DEMO_KEY)==='true');
+  if(window.demoMode){
+    window._demoStore = {};
+    var _get = localStorage.getItem.bind(localStorage);
+    var _set = localStorage.setItem.bind(localStorage);
+    var _rem = localStorage.removeItem.bind(localStorage);
+    // Read from memory first, then fall back to real (for initial load of non-data keys)
+    localStorage.getItem = function(k){ if(window._demoStore && Object.prototype.hasOwnProperty.call(window._demoStore,k)) return window._demoStore[k]; return null; };
+    localStorage.setItem = function(k,v){ if(window._demoStore) window._demoStore[k]=String(v); };
+    localStorage.removeItem = function(k){ if(window._demoStore) delete window._demoStore[k]; };
+    window._demoReset = function(){ window._demoStore={}; };
+  }
+  window.toggleDemoMode = function(){
+    var cur = localStorage.getItem(DEMO_KEY)==='true' || window.demoMode;
+    if(cur){ localStorage.removeItem(DEMO_KEY); } else { _set(DEMO_KEY,'true'); }
+    location.reload();
+  };
+})();
+</script>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center justify-center p-2 sm:p-6 select-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-950/40 via-slate-950 to-slate-950">
+<!-- DEMO MODE BANNER -->
+<div id="demoBanner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:10001;background:linear-gradient(90deg,#f59e0b,#f97316);color:#1c1917;padding:8px 16px;font-size:13px;font-weight:700;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.3);">
+  ⚠️ MODO DEMO — Los datos NO se guardan. Al recargar, todo se reinicia.
+  <button onclick="if(confirm('¿Resetear el demo? Se perderán los datos de prueba.')){location.reload();}" style="margin-left:12px;padding:4px 10px;background:rgba(0,0,0,0.2);border:none;border-radius:6px;color:#1c1917;font-weight:700;cursor:pointer;">Resetear</button>
+  <button onclick="toggleDemoMode()" style="margin-left:8px;padding:4px 10px;background:rgba(0,0,0,0.2);border:none;border-radius:6px;color:#1c1917;font-weight:700;cursor:pointer;">Salir del demo</button>
+</div>
+<script>(function(){ if(window.demoMode){ var b=document.getElementById('demoBanner'); if(b) b.style.display='block'; document.body.style.paddingTop='40px'; } })();</script>
 
     <!-- OVERLAY DE SELECCIÓN DE ROL (solo la primera vez) -->
     <div id="role-overlay" class="fixed inset-0 z-[100] bg-slate-950 flex flex-col items-center justify-center p-6">
@@ -1108,7 +1138,7 @@
         let fbDb = null;
         let fbReady = false;
         try {
-            if (FIREBASE_CONFIG.apiKey && !FIREBASE_CONFIG.apiKey.startsWith('REEMPLAZA')) {
+            if (!window.demoMode && FIREBASE_CONFIG.apiKey && !FIREBASE_CONFIG.apiKey.startsWith('REEMPLAZA')) {
                 firebase.initializeApp(FIREBASE_CONFIG);
                 fbDb = firebase.database();
                 fbReady = true;
@@ -1145,6 +1175,7 @@
 
         function initPeer() {
             try {
+                if (window.demoMode) { console.log('Demo mode: PeerJS desactivado'); return; }
                 if (typeof Peer === 'undefined') { console.warn('PeerJS no cargado'); return; }
                 peer = new Peer({ host: '0.peerjs.com', port: 443, path: '/', secure: true, debug: 0 });
                 peer.on('open', function(id) {
@@ -1480,7 +1511,15 @@
   <a href="prototipo_funcional.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Funcional</a>
   <a href="prototipo_doble.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Vista Doble</a>
   <a href="ensayo_medisync_senior.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Ensayo</a>
+  <div style="border-top:1px solid rgba(255,255,255,0.1);margin:12px 0;padding-top:12px;">
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.05);">
+      <input type="checkbox" id="demoToggle" onchange="toggleDemoMode()" style="width:16px;height:16px;">
+      <span style="color:#cbd5e1;font-size:13px;font-weight:600;">Modo Demo (sin guardar)</span>
+    </label>
+    <p style="color:#64748b;font-size:11px;padding:4px 12px;margin:0;">Activa para probar sin guardar datos. Al recargar, todo se reinicia.</p>
+  </div>
 </div>
+<script>(function(){ var t=document.getElementById('demoToggle'); if(t && window.demoMode) t.checked=true; })();</script>
 <script>
 (function(){
   var btn=document.getElementById('navDrawerBtn');
@@ -1641,7 +1680,7 @@ async function processOfflineQueue(){
 }
 
 // Service Worker registration
-if ('serviceWorker' in navigator){
+if (!window.demoMode && 'serviceWorker' in navigator){
   navigator.serviceWorker.register('sw.js').then(()=>console.log('SW registered')).catch(()=>{});
 }
 
