@@ -106,7 +106,6 @@ Guía completa: [FIREBASE_SETUP.md](FIREBASE_SETUP.md)
 | Integrante | Rol Principal | Avatar |
 |---|---|---|
 | **Santiago** | Líder de Pitch y Video | SL |
-| **Gustavo** | Parte del equipo | GA |
 | **Brayan** | Líder de Prototipo y Desarrollo Web | BA |
 
 ---
