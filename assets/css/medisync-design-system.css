@@ -135,6 +135,27 @@ body.ms-theme::before {
 .ms-theme #drawerPanel a:hover { background: rgba(32,216,255,.1); color: #fff; }
 .ms-theme #drawerPanel h3, .ms-theme #drawerPanel .section-link { color: var(--ms-muted); }
 .ms-theme table th { white-space: nowrap; }
+/* Embedded demo frame used by the landing page. */
+.demo-frame {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  height: auto;
+  min-height: 420px;
+  max-height: 620px;
+}
+@media (min-width: 640px) {
+  .demo-frame {
+    aspect-ratio: 10 / 9;
+    min-height: 480px;
+  }
+}
+@media (min-width: 1024px) {
+  .demo-frame {
+    aspect-ratio: auto;
+    height: min(62vh, 620px);
+    min-height: 520px;
+  }
+}
 .ms-theme table td { min-width: 8.75rem; }
 .ms-theme video, .ms-theme iframe { max-width: 100%; }
 @media (max-width: 640px) {
