@@ -138,12 +138,12 @@ body.ms-theme::before {
 /* Embedded demo frame used by the landing page. */
 .demo-frame {
   width: 100%;
-  max-width: 360px;
+  max-width: none;
   margin-inline: auto;
-  aspect-ratio: 9 / 16;
+  aspect-ratio: 4 / 5;
   height: auto;
-  min-height: 0;
-  max-height: none;
+  min-height: 420px;
+  max-height: 620px;
   padding: 0.7rem;
   border: 1px solid rgba(103, 232, 249, 0.22);
   border-radius: 2rem;
@@ -152,13 +152,16 @@ body.ms-theme::before {
 }
 @media (min-width: 640px) {
   .demo-frame {
-    max-width: 390px;
+    aspect-ratio: 10 / 9;
+    min-height: 480px;
     padding: 0.9rem;
   }
 }
 @media (min-width: 1024px) {
   .demo-frame {
-    max-width: 400px;
+    aspect-ratio: auto;
+    height: min(62vh, 620px);
+    min-height: 520px;
   }
 }
 .ms-theme table td { min-width: 8.75rem; }
