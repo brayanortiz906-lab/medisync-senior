@@ -18,8 +18,108 @@ html{scroll-behavior:smooth;}
 section,[id]{scroll-margin-top:72px;}
 body{padding-top:60px;padding-bottom:90px;}
 </style>
+  <link rel="stylesheet" href="assets/css/ms-nav.css">
 </head>
 <body class="ms-theme min-h-screen p-4 sm:p-8">
+<!-- ================= NAVBAR (compartida) ================= -->
+<nav id="msnNav" class="msn">
+  <div class="msn-inner">
+    <a class="msn-brand" href="index.html" aria-label="MediSync Senior">
+      <img src="assets/img/medisync-logo-v3.svg" alt="">
+      <span>MediSync <em>Senior</em></span>
+    </a>
+    <div class="msn-links">
+      <a href="landing_medisync_senior.html#problema">Problema</a>
+      <a href="landing_medisync_senior.html#solucion">Solución</a>
+      <a href="landing_medisync_senior.html#demostracion">Demostración</a>
+      <a href="landing_medisync_senior.html#ensayo">Ensayo</a>
+      <a href="landing_medisync_senior.html#pitch">Pitch</a>
+      <a href="landing_medisync_senior.html#equipo">Equipo</a>
+    </div>
+    <div class="msn-actions">
+      <div class="msn-drop">
+        <button id="msnSysBtn" class="msn-drop-btn" aria-expanded="false" aria-controls="msnSysMenu" aria-haspopup="true">
+          <i class="fa-solid fa-layer-group" aria-hidden="true"></i> <span>Sistemas</span>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div id="msnSysMenu" class="msn-panel" role="menu" aria-label="Todas las páginas del proyecto">
+          <div class="msn-foot"><span>Portal y app</span><span>TICs 2026</span></div>
+          <a class="msn-item" role="menuitem" href="index.html" aria-current="page">
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
+            <span><strong>Portal del proyecto</strong><small>Estás aquí</small></span>
+          </a>
+          <a class="msn-item" role="menuitem" href="landing_medisync_senior.html">
+            <i class="fa-solid fa-bullhorn" aria-hidden="true"></i>
+            <span><strong>Landing page</strong><small>Campana y propuesta</small></span>
+          </a>
+          <a class="msn-item" role="menuitem" href="prototipo_simple.html">
+            <i class="fa-solid fa-file-code" aria-hidden="true"></i>
+            <span><strong>Prototipo simple</strong><small>HTML minimo, sin conexion</small></span>
+          </a>
+          <a class="msn-item" role="menuitem" href="prototipo_funcional.html">
+            <i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>
+            <span><strong>Prototipo funcional</strong><small>App completa en el navegador</small></span>
+          </a>
+          <div class="msn-sep"></div>
+          <div class="msn-foot"><span>Contenido</span><span></span></div>
+          <a class="msn-item" role="menuitem" href="prototipo_doble.html">
+            <i class="fa-solid fa-columns" aria-hidden="true"></i>
+            <span><strong>Vista doble</strong><small>Mama y cuidador lado a lado</small></span>
+          </a>
+          <a class="msn-item" role="menuitem" href="interfaz_medisync_senior.html">
+            <i class="fa-solid fa-cloud" aria-hidden="true"></i>
+            <span><strong>Interfaz completa</strong><small>Version con conexion</small></span>
+          </a>
+          <a class="msn-item" role="menuitem" href="tutorial_medisync.html">
+            <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
+            <span><strong>Tutorial</strong><small>Guia de uso paso a paso</small></span>
+          </a>
+          <a class="msn-item" role="menuitem" href="ensayo_medisync_senior.html">
+            <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+            <span><strong>Ensayo</strong><small>Documento academico</small></span>
+          </a>
+          <div class="msn-sep"></div>
+          <div class="msn-foot"><span>Contenido</span><span></span></div>
+          <a class="msn-item" role="menuitem" href="design-system.html">
+            <i class="fa-solid fa-swatchbook" aria-hidden="true"></i>
+            <span><strong>Sistema de diseno</strong><small>Tokens y componentes</small></span>
+          </a>
+          <a class="msn-item" role="menuitem" href="https://github.com/brayanortiz906-lab/medisync-senior/releases/latest">
+            <i class="fa-solid fa-brands fa-android" aria-hidden="true"></i>
+            <span><strong>Descargar APK</strong><small>Ultima version Android</small></span>
+          </a>
+        </div>
+      </div>
+      <a class="msn-cta" href="landing_medisync_senior.html#demostracion"><i class="fa-solid fa-play" aria-hidden="true"></i> Probar app</a>
+      <button id="msnBurger" class="msn-burger" aria-expanded="false" aria-controls="msnMobile" aria-label="Abrir menú">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <div id="msnMobile" class="msn-mobile">
+    <div class="msn-mobile-inner">
+      <a href="landing_medisync_senior.html#problema">Problema</a>
+      <a href="landing_medisync_senior.html#solucion">Solución</a>
+      <a href="landing_medisync_senior.html#demostracion">Demostración</a>
+      <a href="landing_medisync_senior.html#ensayo">Ensayo</a>
+      <a href="landing_medisync_senior.html#pitch">Pitch</a>
+      <a href="landing_medisync_senior.html#equipo">Equipo</a>
+      <div class="msn-sep"></div>
+      <div class="msn-mobile-label">Sistemas</div>
+      <a href="index.html">Portal del proyecto</a>
+      <a href="landing_medisync_senior.html">Landing page</a>
+      <a href="prototipo_simple.html">Prototipo simple</a>
+      <a href="prototipo_funcional.html">Prototipo funcional</a>
+      <a href="prototipo_doble.html">Vista doble</a>
+      <a href="interfaz_medisync_senior.html">Interfaz completa</a>
+      <a href="tutorial_medisync.html">Tutorial</a>
+      <a href="ensayo_medisync_senior.html">Ensayo</a>
+      <a href="design-system.html">Sistema de diseno</a>
+      <a href="https://github.com/brayanortiz906-lab/medisync-senior/releases/latest">Descargar APK</a>
+    </div>
+  </div>
+</nav>
+<div class="msn-spacer" aria-hidden="true"></div>
 <div class="mx-auto w-full max-w-7xl px-2 sm:px-4">
     <!-- Header -->
     <header class="text-center mb-10">
@@ -193,5 +293,6 @@ body{padding-top:60px;padding-bottom:90px;}
   
 </div>
 
+  <script src="assets/js/ms-nav.js"></script>
 </body>
 </html>
