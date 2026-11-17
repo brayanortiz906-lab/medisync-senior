@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediSync Senior Design System</title>
+<meta name="description" content="Sistema de diseño biomédico futurista para MediSync Senior: tokens, identidad, componentes y patrones de uso.">
+<meta name="theme-color" content="#030712">
+<link rel="icon" type="image/svg+xml" href="assets/img/medisync-logo-v3.svg">
+<link rel="stylesheet" href="assets/css/medisync-design-system.css">
+</head>
+<body class="ms-design-system">
+<header class="ms-nav">
+  <div class="ms-container ms-nav-inner">
+    <a class="ms-brand" href="index.html" aria-label="Ir al inicio de MediSync Senior">
+      <img src="assets/img/medisync-logo-v3.svg" alt="MediSync Senior">
+      <span>MediSync <em>Senior</em></span>
+    </a>
+    <nav class="ms-nav-links" aria-label="Navegación del sistema">
+      <a href="#tokens">Tokens</a>
+      <a href="#componentes">Componentes</a>
+      <a href="#producto">Producto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="ms-container ms-hero">
+    <div>
+      <p class="ms-eyebrow"><span class="ms-status-dot"></span> Design system · v1</p>
+      <h1 class="ms-title">Tecnología cálida para<br><span class="ms-gradient">el cuidado que importa.</span></h1>
+      <p class="ms-lead">Una identidad biomédica futurista, oscura y accesible para MediSync Senior: señales de salud, precisión tecnológica y una experiencia humana para adultos mayores y sus cuidadores.</p>
+      <div style="display:flex; gap:.7rem; flex-wrap:wrap; margin-top:2rem">
+        <a class="ms-button ms-button-primary" href="landing_medisync_senior.html">Ver producto <span aria-hidden="true">↗</span></a>
+        <a class="ms-button ms-button-secondary" href="#tokens">Explorar sistema</a>
+      </div>
+    </div>
+    <div class="ms-logo-stage" aria-label="Logo MediSync Senior">
+      <img src="assets/img/medisync-logo-v3.svg" alt="Logo MediSync Senior: corazón médico futurista" class="ms-logo-mark">
+      <div class="ms-logo-caption"><strong>Nova Care Mark</strong><span>Motor de salud · cuidado continuo · 12:00</span></div>
+    </div>
+  </section>
+
+  <section id="tokens" class="ms-section">
+    <div class="ms-container">
+      <div class="ms-section-title"><div class="ms-kicker">01 / Foundations</div><h2>Un sistema, no una decoración.</h2><p>Tokens semánticos para mantener consistencia entre la web, el prototipo y futuras superficies de producto.</p></div>
+      <div class="ms-grid">
+        <article class="ms-card">
+          <h3>Color semántico</h3>
+          <div class="ms-swatches">
+            <div class="ms-swatch"><div class="ms-swatch-color" style="background:#030712"></div><strong>Deep Space</strong><small>#030712<br>App background</small></div>
+            <div class="ms-swatch"><div class="ms-swatch-color" style="background:#071426"></div><strong>Clinical Navy</strong><small>#071426<br>Surface base</small></div>
+            <div class="ms-swatch"><div class="ms-swatch-color" style="background:#20d8ff"></div><strong>Pulse Cyan</strong><small>#20D8FF<br>AI + signal</small></div>
+            <div class="ms-swatch"><div class="ms-swatch-color" style="background:#00e5a8"></div><strong>Vital Emerald</strong><small>#00E5A8<br>health confirm</small></div>
+            <div class="ms-swatch"><div class="ms-swatch-color" style="background:#f5b544"></div><strong>Care Amber</strong><small>#F5B544<br>attention</small></div>
+            <div class="ms-swatch"><div class="ms-swatch-color" style="background:#ff6b7a"></div><strong>Urgent Rose</strong><small>#FF6B7A<br>critical action</small></div>
+          </div>
+        </article>
+        <article class="ms-card">
+          <h3>Tipografía</h3>
+          <div class="ms-type-row"><strong>Display / 700</strong><small>Inter · títulos y momentos de producto</small></div>
+          <div class="ms-type-row"><strong>Body / 400</strong><small>16px · lectura clara para adultos mayores</small></div>
+          <div class="ms-type-row"><strong>Caption / 600</strong><small>.72rem · estados, labels y metadatos</small></div>
+          <div class="ms-type-row"><strong>Mono / 12</strong><small>Datos, timestamps, códigos MS-0000</small></div>
+          <p class="ms-muted" style="margin-bottom:0">Mínimo recomendado de 16px para texto operativo y 4.5:1 de contraste.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="componentes" class="ms-section">
+    <div class="ms-container">
+      <div class="ms-section-title"><div class="ms-kicker">02 / Components</div><h2>Controles con intención.</h2><p>Patrones listos para landing, dashboard familiar y tareas críticas.</p></div>
+      <div class="ms-grid">
+        <article class="ms-card">
+          <h3>Botones</h3>
+          <div class="ms-button-row"><button class="ms-button ms-button-primary">Confirmar toma</button><button class="ms-button ms-button-secondary">Ver historial</button><button class="ms-button ms-button-ghost">Recordarme</button><button class="ms-button ms-button-danger">Cancelar</button></div>
+          <p class="ms-muted">Un CTA principal por pantalla. Acciones destructivas siempre aisladas.</p>
+        </article>
+        <article class="ms-card">
+          <h3>Badges de estado</h3>
+          <div class="ms-badge-row"><span class="ms-badge ms-badge-success"><span class="ms-status-dot"></span>Tomada</span><span class="ms-badge ms-badge-warning">Pendiente</span><span class="ms-badge ms-badge-danger">Omitir</span><span class="ms-badge ms-badge-info">Sincronizada</span></div>
+          <p class="ms-muted">El color nunca es el único indicador: siempre texto visible.</p>
+        </article>
+        <article class="ms-card">
+          <h3>Formularios</h3>
+          <div class="ms-form"><label class="ms-field-label" for="code">Código de vinculación</label><input class="ms-field" id="code" placeholder="MS-4821" autocomplete="off"><label class="ms-field-label" for="name">Nombre del paciente</label><input class="ms-field" id="name" placeholder="María López" autocomplete="name"></div>
+        </article>
+        <article class="ms-card">
+          <h3>Alertas</h3>
+          <div class="ms-alert ms-alert-success"><strong>Toma verificada</strong><p>La foto coincide con el medicamento programado.</p></div>
+          <div class="ms-alert"><strong>Revisa la toma</strong><p>Faltan 12 minutos para confirmar la dosis de la tarde.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="producto" class="ms-section">
+    <div class="ms-container">
+      <div class="ms-section-title"><div class="ms-kicker">03 / Product patterns</div><h2>Diseñado para la próxima toma.</h2><p>Patrones que priorizan claridad para la persona mayor y contexto operativo para la familia.</p></div>
+      <div class="ms-grid">
+        <article class="ms-card">
+          <h3>Tarjeta de medicación</h3>
+          <div class="ms-dose-card"><div class="ms-dose-icon">+</div><div><div class="ms-dose-title">Atorvastatina 20mg</div><div class="ms-dose-meta">1 tableta · cada 8:00 p. m. · caja azul</div></div><span class="ms-badge ms-badge-success">Tomada</span></div>
+          <p class="ms-muted">Acciones grandes, estado legible y metadatos mínimos.</p>
+        </article>
+        <article class="ms-card">
+          <h3>Indicadores</h3>
+          <div class="ms-metric"><small>Adherencia 30 días</small><strong>94<small style="font-size:.35em;color:var(--ms-text)">%</small></strong><p class="ms-muted" style="margin:.35rem 0 0">+8% vs. mes anterior</p></div>
+        </article>
+        <article class="ms-card">
+          <h3>Tokens CSS</h3>
+          <code class="ms-code">--ms-bg: #030712;
+--ms-surface: #071426;
+--ms-cyan: #20D8FF;
+--ms-emerald: #00E5A8;
+--ms-radius-lg: 1.75rem;</code>
+        </article>
+        <article class="ms-card">
+          <h3>Principios</h3>
+          <ul class="ms-muted" style="padding-left:1.1rem; margin-top:0"><li><strong style="color:var(--ms-text)">Cuidar antes que llamar la atención.</strong></li><li>Color con significado, nunca decorativo.</li><li>Feedback inmediato después de cada acción.</li><li>No depender solo del color o del sonido.</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="ms-footer"><div class="ms-container">MediSync Senior Design System · Construido para una adherencia comprensible, segura y digna.</div></footer>
+</body>
+</html>

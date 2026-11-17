@@ -6,6 +6,7 @@
   <title>MediSync Senior — Adherencia médica para adultos mayores</title>
   <meta name="description" content="MediSync Senior: la app accesible con doble vista (Mamá y Cuidador) que muestra la foto real de la caja, habla en voz alta y sincroniza las tomas en tiempo real.">
   <!-- Estilos self-contained (sin CDN) -->
+  <link rel="stylesheet" href="assets/css/medisync-design-system.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="assets/fontawesome/all.min.css">
   <style>
@@ -68,13 +69,13 @@ section,[id]{scroll-margin-top:72px;}
 body{padding-top:60px;padding-bottom:90px;}
 </style>
 </head>
-<body class="bg-mesh text-slate-100 antialiased">
+<body class="ms-theme bg-mesh text-slate-100 antialiased">
 <!-- ================= NAVBAR ================= -->
   <nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <a href="#inicio" class="flex items-center gap-2.5 group">
-          <img src="assets/img/medisync-logo-v2.svg" alt="Logo de MediSync Senior" class="w-11 h-11 rounded-xl shadow-lg shadow-blue-600/30 group-hover:scale-105 transition-transform">
+          <img src="assets/img/medisync-logo-v3.svg" alt="Logo de MediSync Senior" class="ms-theme-logo w-11 h-11 rounded-xl shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
           <span class="font-black text-lg tracking-tight">MediSync <span class="text-emerald-400">Senior</span></span>
         </a>
 
@@ -88,7 +89,7 @@ body{padding-top:60px;padding-bottom:90px;}
         </div>
 
         <div class="flex items-center gap-2">
-          <a href="#demostracion" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-sm font-bold px-4 py-2 rounded-xl shadow-lg shadow-blue-600/30 transition">
+          <a href="#demostracion" class="ms-primary hidden sm:inline-flex items-center gap-2 text-sm font-bold px-4 py-2 rounded-xl transition">
             <i class="fa-solid fa-play"></i> Probar app
           </a>
           <button id="menuBtn" class="md:hidden w-10 h-10 rounded-xl glass flex items-center justify-center text-slate-200" aria-label="Abrir menú">
@@ -127,7 +128,7 @@ body{padding-top:60px;padding-bottom:90px;}
             MediSync Senior es la app accesible con <strong class="text-white">doble vista (Mamá y Cuidador)</strong> que muestra la <strong class="text-white">foto real de la caja</strong>, habla en voz alta y sincroniza las tomas en tiempo real.
           </p>
           <div class="mt-8 flex flex-col sm:flex-row gap-3">
-            <a href="#demostracion" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-xl shadow-blue-600/30 transition transform hover:-translate-y-0.5">
+            <a href="#demostracion" class="ms-primary inline-flex items-center justify-center gap-2 font-bold px-6 py-3.5 rounded-xl transition transform hover:-translate-y-0.5">
               <i class="fa-solid fa-mobile-screen-button"></i> Ver Prototipo Interactivo
             </a>
             <a href="#pitch" class="inline-flex items-center justify-center gap-2 glass hover:bg-white/10 text-white font-bold px-6 py-3.5 rounded-xl border border-white/15 transition transform hover:-translate-y-0.5">
@@ -454,7 +455,7 @@ body{padding-top:60px;padding-bottom:90px;}
             <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Calendario, gráficos y citas médicas</li>
           </ul>
           <div class="mt-8 flex flex-col sm:flex-row gap-3">
-            <a href="prototipo_simple.html" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-xl shadow-blue-600/30 transition">
+            <a href="prototipo_simple.html" target="_blank" rel="noopener" class="ms-primary inline-flex items-center justify-center gap-2 font-bold px-6 py-3.5 rounded-xl transition">
               <i class="fa-solid fa-up-right-from-square"></i> Abrir app a pantalla completa
             </a>
             <a href="https://github.com/brayanortiz906-lab/medisync-senior/releases/latest" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-xl shadow-emerald-600/30 transition">
@@ -707,7 +708,7 @@ body{padding-top:60px;padding-bottom:90px;}
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
         <div class="flex items-center gap-2.5">
-          <img src="assets/img/medisync-logo-v2.svg" alt="Logo de MediSync Senior" class="w-9 h-9 rounded-lg shadow-lg shadow-blue-600/20">
+          <img src="assets/img/medisync-logo-v3.svg" alt="Logo de MediSync Senior" class="ms-theme-logo w-9 h-9 rounded-lg shadow-lg shadow-cyan-400/15">
           <span class="font-bold text-sm">MediSync Senior</span>
         </div>
         <p class="text-xs text-slate-500 text-center">

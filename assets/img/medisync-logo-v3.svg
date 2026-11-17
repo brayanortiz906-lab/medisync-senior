@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">MediSync Senior — Logo médico futurista</title>
+  <desc id="desc">Núcleo hexagonal inteligente con señal vital y cruz médica en gradiente cian-esmeralda.</desc>
+  <defs>
+    <linearGradient id="bg" x1="78" y1="50" x2="430" y2="462" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#071426"/><stop offset="1" stop-color="#020711"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="78" y1="68" x2="434" y2="444" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#102544"/><stop offset=".52" stop-color="#08162A"/><stop offset="1" stop-color="#050B18"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="154" y1="140" x2="386" y2="372" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#66F7FF"/><stop offset=".45" stop-color="#20D8FF"/><stop offset="1" stop-color="#00E5A8"/>
+    </linearGradient>
+    <linearGradient id="emerald" x1="322" y1="374" x2="181" y2="148" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00F2B0"/><stop offset=".5" stop-color="#17E0C8"/><stop offset="1" stop-color="#1AA9FF"/>
+    </linearGradient>
+    <linearGradient id="core" x1="210" y1="205" x2="326" y2="326" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9DFFF3"/><stop offset=".35" stop-color="#2BE6FF"/><stop offset="1" stop-color="#00E5A8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(255 250) rotate(90) scale(190)">
+      <stop stop-color="#20D8FF" stop-opacity=".36"/><stop offset="1" stop-color="#20D8FF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow" x="0" y="0" width="512" height="512" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="16" y="16" width="480" height="480" rx="106" fill="url(#bg)"/>
+  <rect x="33" y="33" width="446" height="446" rx="88" fill="url(#panel)" stroke="#1D3D5A" stroke-width="2"/>
+  <rect x="54" y="54" width="404" height="404" rx="66" fill="url(#glow)"/>
+  <path d="M256 80l132 76v152l-132 78-132-78V156l132-76z" fill="none" stroke="#173654" stroke-width="18" stroke-linejoin="round" opacity=".82"/>
+  <path d="M256 102l112 64v128l-112 66-112-66V166l112-64z" fill="#071426" stroke="url(#cyan)" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M256 130l84 48v96l-84 50-84-50v-96l84-48z" fill="#0A1C31" stroke="#1E5671" stroke-width="2"/>
+  <path d="M238 197h36v-35h34v35h36v36h-36v35h-34v-35h-36v-36z" fill="url(#core)" filter="url(#softGlow)"/>
+  <path d="M164 255h53l20-48 34 96 25-75 17 27h45" fill="none" stroke="#7AF9D0" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="256" cy="256" r="18" fill="#EFFFFF" opacity=".92"/>
+  <circle cx="256" cy="256" r="7" fill="#00E5A8"/>
+</svg>
