@@ -137,23 +137,28 @@ body.ms-theme::before {
 .ms-theme table th { white-space: nowrap; }
 /* Embedded demo frame used by the landing page. */
 .demo-frame {
-  aspect-ratio: 4 / 5;
   width: 100%;
+  max-width: 360px;
+  margin-inline: auto;
+  aspect-ratio: 9 / 16;
   height: auto;
-  min-height: 420px;
-  max-height: 620px;
+  min-height: 0;
+  max-height: none;
+  padding: 0.7rem;
+  border: 1px solid rgba(103, 232, 249, 0.22);
+  border-radius: 2rem;
+  background: #020617;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.42), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 @media (min-width: 640px) {
   .demo-frame {
-    aspect-ratio: 10 / 9;
-    min-height: 480px;
+    max-width: 390px;
+    padding: 0.9rem;
   }
 }
 @media (min-width: 1024px) {
   .demo-frame {
-    aspect-ratio: auto;
-    height: min(62vh, 620px);
-    min-height: 520px;
+    max-width: 400px;
   }
 }
 .ms-theme table td { min-width: 8.75rem; }
