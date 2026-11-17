@@ -184,7 +184,7 @@
 </nav>
 <div class="msn-spacer" aria-hidden="true"></div>
 <!-- DEMO MODE BANNER -->
-<div id="demoBanner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:10001;background:linear-gradient(90deg,#f59e0b,#f97316);color:#1c1917;padding:8px 16px;font-size:13px;font-weight:700;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.3);">
+<div id="demoBanner" style="display:none;position:fixed;top:64px;left:0;right:0;z-index:60;background:linear-gradient(90deg,#f59e0b,#f97316);color:#1c1917;padding:8px 16px;font-size:13px;font-weight:700;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.3);">
   ⚠️ MODO DEMO — Los datos NO se guardan. Al recargar, todo se reinicia.
   <button onclick="if(confirm('¿Resetear el demo? Se perderán los datos de prueba.')){location.reload();}" style="margin-left:12px;padding:4px 10px;background:rgba(0,0,0,0.2);border:none;border-radius:6px;color:#1c1917;font-weight:700;cursor:pointer;">Resetear</button>
   <button onclick="toggleDemoMode()" style="margin-left:8px;padding:4px 10px;background:rgba(0,0,0,0.2);border:none;border-radius:6px;color:#1c1917;font-weight:700;cursor:pointer;">Salir del demo</button>
@@ -192,7 +192,7 @@
 <script>(function(){ if(window.demoMode){ var b=document.getElementById('demoBanner'); if(b) b.style.display='block'; document.body.style.paddingTop='40px'; } })();</script>
 
     <!-- OVERLAY DE SELECCIÓN DE ROL (solo la primera vez) -->
-    <div id="role-overlay" class="fixed inset-0 z-[100] bg-slate-950 flex flex-col items-center justify-center p-6">
+    <div id="role-overlay" class="fixed inset-0 z-40 bg-slate-950 flex flex-col items-center justify-center p-6">
         <div class="max-w-sm w-full text-center space-y-6">
             <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-blue-600 to-emerald-500 flex items-center justify-center shadow-lg">
                 <i class="fa-solid fa-heart-pulse text-white text-3xl"></i>
@@ -1602,17 +1602,10 @@
         });
     </script>
 <!-- NAV DRAWER -->
-<div id="navDrawerBtn" style="position:fixed;top:60px;right:12px;z-index:9999;width:44px;height:44px;border-radius:12px;background:rgba(15,23,42,0.9);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(8px);">
-  <i class="fa-solid fa-bars" style="color:#e2e8f0;font-size:18px;"></i>
+<div id="navDrawerBtn" title="Ajustes" style="position:fixed;bottom:20px;right:20px;z-index:9999;width:44px;height:44px;border-radius:12px;background:rgba(15,23,42,0.9);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(8px);">
+  <i class="fa-solid fa-sliders" style="color:#e2e8f0;font-size:16px;"></i>
 </div>
-<div id="navDrawer" style="position:fixed;top:0;right:-280px;width:260px;height:100vh;background:rgba(10,14,26,0.98);border-left:1px solid rgba(255,255,255,0.1);z-index:10000;padding:80px 16px 16px;transition:right 0.3s ease;backdrop-filter:blur(20px);">
-  <a href="index.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Inicio</a>
-  <a href="landing_medisync_senior.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Landing</a>
-  <a href="tutorial_medisync.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Tutorial</a>
-  <a href="prototipo_simple.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Prototipo</a>
-  <a href="prototipo_funcional.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Funcional</a>
-  <a href="prototipo_doble.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Vista Doble</a>
-  <a href="ensayo_medisync_senior.html" style="display:block;padding:10px 12px;color:#cbd5e1;text-decoration:none;border-radius:8px;margin-bottom:4px;">Ensayo</a>
+<div id="navDrawer" style="position:fixed;top:0;right:-280px;width:260px;height:100vh;background:rgba(10,14,26,0.98);border-left:1px solid rgba(255,255,255,0.1);z-index:10000;padding:16px;transition:right 0.3s ease;backdrop-filter:blur(20px);">
   <div style="border-top:1px solid rgba(255,255,255,0.1);margin:12px 0;padding-top:12px;">
     <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.05);">
       <input type="checkbox" id="demoToggle" onchange="toggleDemoMode()" style="width:16px;height:16px;">
@@ -1670,7 +1663,7 @@
   #voicePanel .toggle::after{content:'';position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;transition:left .2s;}
   #voicePanel .toggle.on::after{left:20px;}
   /* offline badge */
-  #offlineBadge{position:fixed;top:8px;right:8px;z-index:9997;background:#f59e0b;color:#111;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:800;display:none;font-family:system-ui,sans-serif;}
+  #offlineBadge{position:fixed;top:76px;right:12px;z-index:9997;background:#f59e0b;color:#111;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:800;display:none;font-family:system-ui,sans-serif;}
   #offlineBadge.show{display:block;}
   #syncToast{position:fixed;bottom:84px;right:20px;z-index:9997;background:#10b981;color:#fff;padding:8px 14px;border-radius:10px;font-size:12px;font-weight:700;display:none;box-shadow:0 8px 20px rgba(16,185,129,.4);font-family:system-ui,sans-serif;}
   #syncToast.show{display:block;animation:toastIn .3s ease-out;}
