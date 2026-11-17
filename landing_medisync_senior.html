@@ -77,6 +77,55 @@ body{padding-top:60px;padding-bottom:90px;}
     .hover-line:hover      { border-color:#2c3c4f; }
     .track-wide   { letter-spacing:.2em; }
 
+    /* Menu de sistemas (dropdown derecha) */
+    .nav-drop { position:relative; }
+    .nav-drop-btn {
+      display:inline-flex; align-items:center; gap:.5rem;
+      font-size:.875rem; font-weight:600; padding:.5rem .9rem;
+      border-radius:.75rem; border:1px solid #22303f; background:#101823;
+      color:#e2e8f0; cursor:pointer; transition:background .15s, border-color .15s, color .15s;
+    }
+    .nav-drop-btn:hover, .nav-drop-btn[aria-expanded="true"] { background:#16212f; border-color:#2c3c4f; color:#fff; }
+    .nav-drop-btn i.fa-chevron-down { font-size:.65rem; color:#64748b; transition:transform .18s; }
+    .nav-drop-btn[aria-expanded="true"] i.fa-chevron-down { transform:rotate(180deg); }
+    .nav-drop-panel {
+      position:absolute; right:0; top:calc(100% + .6rem); z-index:60;
+      display:none; grid-template-columns:1fr 1fr; gap:.25rem;
+      width:min(34rem, calc(100vw - 2rem));
+      background:#0d1520; border:1px solid #22303f; border-radius:1rem;
+      padding:.5rem;
+    }
+    .nav-drop-panel.open { display:grid; }
+    .nav-drop-item {
+      display:flex; align-items:flex-start; gap:.6rem;
+      padding:.6rem .7rem; border-radius:.6rem; text-decoration:none;
+      transition:background .15s;
+    }
+    .nav-drop-item:hover { background:#16212f; }
+    .nav-drop-item i { color:#34d399; font-size:.8rem; margin-top:.2rem; width:.9rem; text-align:center; }
+    .nav-drop-item strong { display:block; font-size:.8rem; font-weight:600; color:#e2e8f0; }
+    .nav-drop-item small { display:block; font-size:.68rem; color:#64748b; line-height:1.35; margin-top:.1rem; }
+    .nav-drop-item[aria-current="page"] { background:#16212f; }
+    .nav-drop-item[aria-current="page"] strong { color:#34d399; }
+    .nav-drop-sep { grid-column:1 / -1; height:1px; background:#22303f; margin:.35rem .5rem; }
+    .nav-drop-foot { grid-column:1 / -1; display:flex; justify-content:space-between; align-items:center;
+      padding:.45rem .7rem .25rem; font-size:.65rem; color:#64748b; letter-spacing:.12em; text-transform:uppercase; }
+    .nav-links { display:none; }
+    @media (min-width:1024px) { .nav-links { display:flex; align-items:center; gap:.25rem; } }
+    .nav-burger { display:inline-flex; }
+    @media (min-width:1024px) { .nav-burger { display:none; } }
+    .nav-cta { display:none; }
+    @media (min-width:768px) { .nav-cta { display:inline-flex; } }
+    .nav-mobile:not(.hidden) { display:block; }
+    @media (min-width:1024px) { .nav-mobile { display:none !important; } }
+    @media (max-width:720px) {
+      .nav-drop-panel {
+        position:fixed; left:.75rem; right:.75rem; top:68px; width:auto;
+        grid-template-columns:1fr; max-height:calc(100vh - 90px); overflow-y:auto;
+      }
+    }
+
+
     /* El design system apaga .bg-mesh con .ms-theme .bg-mesh: recuperar fondo y retícula */
     .ms-theme.bg-mesh {
       background-color:#0b111c;
@@ -131,7 +180,7 @@ body{padding-top:60px;padding-bottom:90px;}
           <span class="font-black text-lg tracking-tight">MediSync <span class="text-emerald-400">Senior</span></span>
         </a>
 
-        <div class="hidden md:flex items-center gap-1">
+        <div class="nav-links">
           <a href="#problema" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:text-white hover:bg-white/5 transition">Problema</a>
           <a href="#solucion" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:text-white hover:bg-white/5 transition">Solución</a>
           <a href="#demostracion" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:text-white hover:bg-white/5 transition">Demostración</a>
@@ -141,10 +190,62 @@ body{padding-top:60px;padding-bottom:90px;}
         </div>
 
         <div class="flex items-center gap-2">
-          <a href="#demostracion" class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors duration-200">
+          <div class="nav-drop">
+            <button id="sysBtn" class="nav-drop-btn" aria-expanded="false" aria-controls="sysMenu" aria-haspopup="true">
+              <i class="fa-solid fa-layer-group text-emerald-400"></i> <span>Sistemas</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div id="sysMenu" class="nav-drop-panel" role="menu" aria-label="Todas las páginas del proyecto">
+              <div class="nav-drop-foot"><span>Portal y app</span><span>TICs 2026</span></div>
+              <a class="nav-drop-item" role="menuitem" href="index.html">
+                <i class="fa-solid fa-house"></i>
+                <span><strong>Portal del proyecto</strong><small>Índice de todas las páginas</small></span>
+              </a>
+              <a class="nav-drop-item" role="menuitem" href="landing_medisync_senior.html" aria-current="page">
+                <i class="fa-solid fa-bullhorn"></i>
+                <span><strong>Landing page</strong><small>Estás aquí</small></span>
+              </a>
+              <a class="nav-drop-item" role="menuitem" href="prototipo_simple.html">
+                <i class="fa-solid fa-file-code"></i>
+                <span><strong>Prototipo simple</strong><small>HTML mínimo, sin conexión</small></span>
+              </a>
+              <a class="nav-drop-item" role="menuitem" href="prototipo_funcional.html">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <span><strong>Prototipo funcional</strong><small>App completa en el navegador</small></span>
+              </a>
+              <div class="nav-drop-sep"></div>
+              <div class="nav-drop-foot"><span>Contenido</span><span></span></div>
+              <a class="nav-drop-item" role="menuitem" href="prototipo_doble.html">
+                <i class="fa-solid fa-columns"></i>
+                <span><strong>Vista doble</strong><small>Mamá y cuidador lado a lado</small></span>
+              </a>
+              <a class="nav-drop-item" role="menuitem" href="interfaz_medisync_senior.html">
+                <i class="fa-solid fa-cloud"></i>
+                <span><strong>Interfaz completa</strong><small>Versión con conexión</small></span>
+              </a>
+              <a class="nav-drop-item" role="menuitem" href="tutorial_medisync.html">
+                <i class="fa-solid fa-circle-question"></i>
+                <span><strong>Tutorial</strong><small>Guía de uso paso a paso</small></span>
+              </a>
+              <a class="nav-drop-item" role="menuitem" href="ensayo_medisync_senior.html">
+                <i class="fa-solid fa-file-lines"></i>
+                <span><strong>Ensayo</strong><small>Documento académico</small></span>
+              </a>
+              <div class="nav-drop-sep"></div>
+              <a class="nav-drop-item" role="menuitem" href="design-system.html">
+                <i class="fa-solid fa-swatchbook"></i>
+                <span><strong>Sistema de diseño</strong><small>Tokens y componentes</small></span>
+              </a>
+              <a class="nav-drop-item" role="menuitem" href="https://github.com/brayanortiz906-lab/medisync-senior/releases/latest">
+                <i class="fa-brands fa-android"></i>
+                <span><strong>Descargar APK</strong><small>Última versión Android</small></span>
+              </a>
+            </div>
+          </div>
+          <a href="#demostracion" class="nav-cta items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors duration-200">
             <i class="fa-solid fa-play"></i> Probar app
           </a>
-          <button id="menuBtn" class="md:hidden w-10 h-10 rounded-xl glass flex items-center justify-center text-slate-200" aria-label="Abrir menú">
+          <button id="menuBtn" class="nav-burger w-10 h-10 rounded-xl glass items-center justify-center text-slate-200" aria-label="Abrir menú">
             <i class="fa-solid fa-bars"></i>
           </button>
         </div>
@@ -152,7 +253,7 @@ body{padding-top:60px;padding-bottom:90px;}
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobileMenu" class="hidden md:hidden px-4 pb-4">
+    <div id="mobileMenu" class="nav-mobile hidden px-4 pb-4">
       <div class="glass-strong rounded-2xl p-2 space-y-1">
         <a href="#problema" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-white/5">Problema</a>
         <a href="#solucion" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-white/5">Solución</a>
@@ -160,6 +261,16 @@ body{padding-top:60px;padding-bottom:90px;}
         <a href="#ensayo" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-white/5">Ensayo</a>
         <a href="#pitch" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-white/5">Pitch</a>
         <a href="#equipo" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-white/5">Equipo</a>
+        <div class="my-1 h-px bg-[#22303f]"></div>
+        <p class="px-3 pt-1 pb-1 text-[10px] font-bold uppercase track-wide text-slate-500">Sistemas</p>
+        <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover-surface-2">Portal del proyecto</a>
+        <a href="prototipo_simple.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover-surface-2">Prototipo simple</a>
+        <a href="prototipo_funcional.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover-surface-2">Prototipo funcional</a>
+        <a href="prototipo_doble.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover-surface-2">Vista doble</a>
+        <a href="interfaz_medisync_senior.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover-surface-2">Interfaz completa</a>
+        <a href="tutorial_medisync.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover-surface-2">Tutorial</a>
+        <a href="ensayo_medisync_senior.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover-surface-2">Ensayo</a>
+        <a href="design-system.html" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover-surface-2">Sistema de diseño</a>
       </div>
     </div>
   </nav>
@@ -848,7 +959,22 @@ body{padding-top:60px;padding-bottom:90px;}
     });
 
     // Mobile menu
-    const menuBtn = document.getElementById('menuBtn');
+    const sysBtn = document.getElementById('sysBtn');
+const sysMenu = document.getElementById('sysMenu');
+if (sysBtn && sysMenu) {
+  const closeSys = () => { sysMenu.classList.remove('open'); sysBtn.setAttribute('aria-expanded', 'false'); };
+  sysBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = sysMenu.classList.toggle('open');
+    sysBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', (e) => {
+    if (!sysMenu.contains(e.target) && !sysBtn.contains(e.target)) closeSys();
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSys(); });
+}
+
+const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     menuBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
