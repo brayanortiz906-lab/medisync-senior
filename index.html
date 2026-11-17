@@ -22,12 +22,10 @@ body{padding-top:60px;padding-bottom:90px;}
 <div class="max-w-5xl mx-auto">
     <!-- Header -->
     <header class="text-center mb-10">
-      <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-blue-600 to-emerald-500 flex items-center justify-center shadow-xl mb-4">
-        <i class="fa-solid fa-heart-pulse text-white text-3xl"></i>
-      </div>
+      <img src="assets/img/medisync-logo.png" alt="Logo de MediSync Senior" class="w-20 h-20 mx-auto rounded-2xl shadow-2xl shadow-blue-600/30 mb-4">
       <h1 class="text-3xl sm:text-4xl font-black text-white">MediSync Senior</h1>
       <p class="text-sm text-slate-400 mt-2">Portal del Proyecto — Institución Universitaria Pascual Bravo · TICs 2026</p>
-      <p class="text-xs text-slate-500 mt-1">Adherencia médica para adultos mayores · Doble vista (Mamá y Cuidador)</p>
+      <p class="text-xs text-slate-500 mt-1">Nativo Android · Web · Doble vista (Mamá y Cuidador)</p>
     </header>
 
     <!-- Cards Grid -->
@@ -49,7 +47,7 @@ body{padding-top:60px;padding-bottom:90px;}
           <i class="fa-solid fa-mobile-screen text-white text-xl"></i>
         </div>
         <h2 class="text-lg font-black text-white">Prototipo Completo</h2>
-        <p class="text-xs text-slate-400 mt-2 leading-relaxed">App funcional con doble vista, voz, sincronización (Firebase + modo local), código de vinculación y todas las funcionalidades.</p>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">App funcional con doble vista, voz, sincronización en la nube o modo local, código de vinculación y todas las funcionalidades del prototipo.</p>
         <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-emerald-400">Probar app <i class="fa-solid fa-arrow-right"></i></span>
       </a>
 
@@ -89,7 +87,7 @@ body{padding-top:60px;padding-bottom:90px;}
           <i class="fa-brands fa-github text-white text-xl"></i>
         </div>
         <h2 class="text-lg font-black text-white">Repositorio GitHub</h2>
-        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Código fuente completo, documentación, configuración Firebase y proyecto Android (Capacitor).</p>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Código fuente completo, prototipo web, app Android nativa, Supabase/Google y release v9.0.4.</p>
         <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-slate-300">Ver repo <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></span>
       </a>
     </div>
@@ -112,16 +110,38 @@ body{padding-top:60px;padding-bottom:90px;}
         </div>
         <div>
           <p class="font-bold text-slate-200">Tecnologías</p>
-          <p>HTML5 · Tailwind CSS · JavaScript · Firebase (opcional) · Capacitor</p>
+          <p>HTML5 · Tailwind CSS · JavaScript · Kotlin · Jetpack Compose · Supabase</p>
         </div>
       </div>
     </div>
 
-    <!-- Firebase Note -->
-    <div class="mt-6 glass rounded-2xl p-4 border border-amber-500/30">
-      <p class="text-xs text-amber-300">
-        <i class="fa-solid fa-triangle-exclamation mr-1"></i>
-        <strong>Nota:</strong> El prototipo completo usa Firebase para sincronización entre dispositivos. Sin configuración de Firebase, funciona en modo local (mismo navegador). Guía: <a href="FIREBASE_SETUP.md" class="underline hover:text-amber-200">FIREBASE_SETUP.md</a>
+    <!-- Por qué / Pitch -->
+    <div class="mt-8 grid grid-cols-1 lg:grid-cols-5 gap-5">
+      <section class="lg:col-span-2 glass rounded-2xl p-6 border border-rose-500/30">
+        <span class="text-xs font-black uppercase tracking-widest text-rose-400">Por qué existe</span>
+        <h2 class="mt-2 text-2xl font-black text-white">Las cajas son idénticas. Los olvidos cuestan salud.</h2>
+        <p class="mt-3 text-sm text-slate-300 leading-relaxed">María y los adultos mayores tienen problemas para tomar la medicina correcta porque las cajas son idénticas y sufren olvidos; esto le cuesta complicaciones de salud y horas a su cuidador.</p>
+        <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+          <div class="rounded-2xl bg-slate-950/50 p-3"><p class="text-2xl font-black text-rose-300">5+</p><p class="text-[10px] text-slate-400 font-bold">horas del cuidador</p></div>
+          <div class="rounded-2xl bg-slate-950/50 p-3"><p class="text-2xl font-black text-amber-300">2</p><p class="text-[10px] text-slate-400 font-bold">vistas conectadas</p></div>
+          <div class="rounded-2xl bg-slate-950/50 p-3"><p class="text-2xl font-black text-emerald-300">1</p><p class="text-[10px] text-slate-400 font-bold">botón para tomar</p></div>
+        </div>
+      </section>
+      <section class="lg:col-span-3 glass rounded-2xl p-6">
+        <span class="text-xs font-black uppercase tracking-widest text-amber-400">Videos</span>
+        <h2 class="mt-2 text-2xl font-black text-white">Pitch y prototipo en video.</h2>
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <figure class="rounded-2xl overflow-hidden bg-slate-950 border border-white/10"><video src="assets/videos/pich.mp4" controls preload="metadata" playsinline class="w-full aspect-video object-contain bg-black"></video><figcaption class="p-3 text-[11px] text-slate-400 font-bold">Video pitch — problema, solución y pedido de inversión.</figcaption></figure>
+          <figure class="rounded-2xl overflow-hidden bg-slate-950 border border-white/10"><video src="assets/videos/videoprototipo.mp4" controls preload="metadata" playsinline class="w-full aspect-video object-contain bg-black"></video><figcaption class="p-3 text-[11px] text-slate-400 font-bold">Demostración del prototipo funcional.</figcaption></figure>
+        </div>
+      </section>
+    </div>
+
+    <!-- Estado del producto -->
+    <div class="mt-6 glass rounded-2xl p-4 border border-emerald-500/30">
+      <p class="text-xs text-emerald-300">
+        <i class="fa-solid fa-circle-check mr-1"></i>
+        <strong>Versión actual:</strong> Android nativo con Demo local y Paired con Google Sign-In + Supabase. Sincronización de tomas entre dispositivos. <a href="https://github.com/brayanortiz906-lab/medisync-senior/releases/tag/v9.0.4" class="underline hover:text-emerald-200">Release v9.0.4</a>
       </p>
     </div>
 
@@ -157,7 +177,7 @@ body{padding-top:60px;padding-bottom:90px;}
   <a href="tutorial_medisync.html" onclick="document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawerPanel').classList.remove('open');">Tutorial</a>
   <a href="prototipo_simple.html" onclick="document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawerPanel').classList.remove('open');">Prototipo</a>
   <a href="prototipo_funcional.html" onclick="document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawerPanel').classList.remove('open');">Funcional</a>
-  <a href="prototipo_doble.html" onclick="document.getElementById(\'drawerOverlay\').classList.remove(\'open\');document.getElementById(\'drawerPanel\').classList.remove(\'open\');">Vista Doble</a>
+  <a href="prototipo_doble.html" onclick="document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawerPanel').classList.remove('open');">Vista Doble</a>
   <a href="ensayo_medisync_senior.html" onclick="document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawerPanel').classList.remove('open');">Ensayo</a>
   
 </div>
