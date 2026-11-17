@@ -943,17 +943,6 @@ body{padding-top:0;padding-bottom:0;}
   </div>
 
   <script>
-    // Navbar glass on scroll
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        nav.classList.add('glass-strong');
-        nav.classList.remove('bg-transparent');
-      } else {
-        nav.classList.remove('glass-strong');
-      }
-    });
-
     // Mobile menu
     const sysBtn = document.getElementById('sysBtn');
 const sysMenu = document.getElementById('sysMenu');
@@ -970,21 +959,6 @@ if (sysBtn && sysMenu) {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSys(); });
 }
 
-const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      const icon = menuBtn.querySelector('i');
-      icon.classList.toggle('fa-bars');
-      icon.classList.toggle('fa-xmark');
-    });
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
-      const icon = menuBtn.querySelector('i');
-      icon.classList.add('fa-bars');
-      icon.classList.remove('fa-xmark');
-    }));
-
     // Smooth scroll manual para anchors (backup)
     document.querySelectorAll('a[href^="#"]').forEach(link => {
       link.addEventListener('click', (e) => {
@@ -999,16 +973,31 @@ const menuBtn = document.getElementById('menuBtn');
       });
     });
 
-    // Reveal on scroll
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    // Reveal on scroll: por scroll (determinista) + failsafe que nunca deja contenido oculto
+    (function () {
+      const items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+      if (!items.length) return;
+      let ticking = false;
+      const check = function () {
+        const h = window.innerHeight;
+        items.forEach(function (el) {
+          if (el.classList.contains('in')) return;
+          const r = el.getBoundingClientRect();
+          if (r.top < h * 0.92 && r.bottom > -h * 0.3) el.classList.add('in');
+        });
+        ticking = false;
+      };
+      const onScroll = function () {
+        if (!ticking) { ticking = true; window.requestAnimationFrame(check); }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      window.addEventListener('load', check);
+      check();
+      window.setTimeout(function () {
+        items.forEach(function (el) { el.classList.add('in'); });
+      }, 3000);
+    })();
 
     // Modal helpers
     function openModal(id) { document.getElementById(id).classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
