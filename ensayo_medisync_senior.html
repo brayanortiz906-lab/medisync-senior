@@ -3,10 +3,11 @@
 <head>
 <link rel="stylesheet" href="assets/fontawesome/all.min.css">
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ensayo - MediSync Senior</title>
 <style>
 
-body{font-family:"Times New Roman",Times,serif;font-size:12pt;line-height:1.6;margin:0;padding:32px;color:#111;background:#fff;}
+body{font-family:"Times New Roman",Times,serif;font-size:12pt;line-height:1.6;margin:0;padding:clamp(16px,4vw,32px);word-wrap:break-word;overflow-wrap:break-word;color:#111;background:#fff;}
 h1{font-size:16pt;text-align:center;margin:4px 0 12px;}
 h2{font-size:13pt;margin-top:16px;margin-bottom:4px;}
 h3{font-size:12pt;font-style:italic;margin-top:12px;}
@@ -16,7 +17,7 @@ p.spacer{margin:4px 0;text-indent:0;}
 blockquote{margin:12px 24px;font-style:italic;text-align:justify;}
 ul,ol{margin:8px 0 8px 24px;}
 li{text-align:justify;margin:4px 0;}
-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:11pt;}
+.ms-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}.ms-table-scroll table{min-width:640px}table{width:100%;border-collapse:collapse;margin:12px 0;font-size:11pt;}
 td,th{border:1px solid #888;padding:6px;vertical-align:top;}
 
 </style>
@@ -74,7 +75,7 @@ Institución Universitaria Pascual Bravo</p>
 <p>Antes de plantear MediSync Senior, el equipo revisó algunas alternativas que actualmente se utilizan para apoyar la toma de medicamentos. El objetivo no era copiar una solución existente, sino identificar qué resuelven bien y qué dejan por fuera.</p>
 <p class="caption">Tabla 1</p>
 <p style="text-align:center;">Comparación entre soluciones existentes y MediSync Senior</p>
-<table>
+<div class="ms-table-scroll"><table>
 <tr>
 <td>Solución</td>
 <td>Aportes</td>
@@ -99,7 +100,7 @@ Institución Universitaria Pascual Bravo</p>
 <td>No avisan por sí solos si la persona olvidó una toma. Requieren que alguien los organice y pueden generar confusiones si las pastillas se cambian de compartimento.</td>
 <td>Aproximadamente entre $15.000 y $30.000 COP.</td>
 </tr>
-</table>
+</table></div>
 <p class="caption">Nota. Elaboración propia a partir de la revisión de las soluciones y de las pruebas iniciales realizadas por el equipo.</p>
 <p>La comparación permite ver que las aplicaciones digitales son útiles para recordar, pero muchas veces no fueron diseñadas pensando primero en una persona mayor con presbicia, poca familiaridad con los teléfonos o dificultades para leer textos pequeños. Estudios sobre herramientas digitales de medicación para personas mayores señalan que los usuarios valoran la navegación simple, el texto grande, la personalización y el apoyo por audio (Smaje et al., 2018). Ese es precisamente el espacio donde puede aportar MediSync Senior.</p>
 <h2>3. Propuesta de solución: MediSync Senior</h2>

@@ -178,3 +178,12 @@ body.ms-theme::before {
 @media (prefers-reduced-motion: reduce) {
   body.ms-theme *, body.ms-theme *::before, body.ms-theme *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+/* Responsive hardening (all viewports incl. TV) */
+html{-webkit-text-size-adjust:100%;}
+img,video,iframe{max-width:100%;}
+iframe{max-width:100%;}
+.ms-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;}
+.ms-table-scroll table{min-width:640px;}
+:focus-visible{outline:2px solid #00e5a8;outline-offset:2px;}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}}
