@@ -4,23 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MediSync Senior — Portal del Proyecto</title>
-  <link rel="stylesheet" href="assets/css/medisync-design-system.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="assets/fontawesome/all.min.css">
-  <style>
-    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: #030712; color: #e2e8f0; }
-    .glass { background: rgba(15,23,42,0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
-    .card:hover { transform: translateY(-4px); border-color: rgba(59,130,246,0.4); }
-    .card { transition: all .3s ease; }
-  </style>
-<style>
-html{scroll-behavior:smooth;}
-section,[id]{scroll-margin-top:72px;}
-body{padding-top:60px;padding-bottom:90px;}
-</style>
   <link rel="stylesheet" href="assets/css/ms-nav.css">
+  <link rel="stylesheet" href="assets/css/ms-theme.css">
+  <style>
+    html { scroll-behavior: smooth; }
+    section, [id] { scroll-margin-top: 84px; }
+  </style>
 </head>
-<body class="ms-theme min-h-screen p-4 sm:p-8">
+<body class="ms-page">
 <!-- ================= NAVBAR (compartida) ================= -->
 <nav id="msnNav" class="msn">
   <div class="msn-inner">
@@ -120,177 +116,170 @@ body{padding-top:60px;padding-bottom:90px;}
   </div>
 </nav>
 <div class="msn-spacer" aria-hidden="true"></div>
-<div class="mx-auto w-full max-w-7xl px-2 sm:px-4">
-    <!-- Header -->
-    <header class="text-center mb-10">
-      <img src="assets/img/medisync-logo-v3.svg" alt="Logo de MediSync Senior" class="w-20 h-20 mx-auto rounded-2xl shadow-2xl shadow-cyan-400/30 mb-4">
-      <h1 class="text-3xl sm:text-4xl font-black text-white">MediSync Senior</h1>
-      <p class="text-sm text-slate-400 mt-2">Portal del Proyecto — Institución Universitaria Pascual Bravo · TICs 2026</p>
-      <p class="text-xs text-slate-500 mt-1">Nativo Android · Web · Doble vista (Mamá y Cuidador)</p>
-    </header>
+<div class="ms-shell">
 
-    <!-- Cards Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+  <header class="ms-hero">
+    <div class="ms-hero-mark">
+      <img src="assets/img/medisync-logo-v3.svg" alt="Logo de MediSync Senior">
+      <span>MediSync <em style="font-style:normal;color:var(--mst-accent)">Senior</em></span>
+    </div>
+    <span class="ms-eyebrow">Institución Universitaria Pascual Bravo · TICs 2026</span>
+    <h1>El proyecto completo,<br>en un solo lugar.</h1>
+    <p class="ms-lead">
+      Portal del proyecto MediSync Senior: la app accesible con doble vista (Mamá y Cuidador) que
+      muestra la foto real de la caja, habla en voz alta y sincroniza las tomas en tiempo real.
+    </p>
+    <div class="ms-hero-actions">
+      <a class="ms-btn" href="landing_medisync_senior.html"><i class="fa-solid fa-bullhorn"></i> Ver landing</a>
+      <a class="ms-btn ms-btn-ghost" href="prototipo_funcional.html"><i class="fa-solid fa-play"></i> Probar app</a>
+      <a class="ms-btn ms-btn-ghost" href="https://github.com/brayanortiz906-lab/medisync-senior/releases/latest"><i class="fa-brands fa-android"></i> Descargar APK</a>
+    </div>
+    <ul class="ms-metrics">
+      <li><b>2</b><small>Vistas conectadas: Mamá y Cuidador</small></li>
+      <li><b>1</b><small>Botón para registrar la toma</small></li>
+      <li><b>v9.0.4</b><small>Versión actual del APK Android</small></li>
+      <li><b>3</b><small>Plataformas: Android, Web y escritorio</small></li>
+    </ul>
+  </header>
 
-      <!-- Landing Page -->
-      <a href="landing_medisync_senior.html" class="card glass rounded-2xl p-6 block">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center mb-4">
-          <i class="fa-solid fa-globe text-white text-xl"></i>
-        </div>
-        <h2 class="text-lg font-black text-white">Landing Page</h2>
-        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Página principal del proyecto. Hero, problema, solución, demo, pitch, ensayo y equipo. Diseño dark con glassmorphism.</p>
-        <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-blue-400">Ver página <i class="fa-solid fa-arrow-right"></i></span>
-      </a>
-
-      <!-- Design System -->
-      <a href="design-system.html" class="card glass rounded-2xl p-6 block">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-emerald-500 flex items-center justify-center mb-4">
-          <i class="fa-solid fa-layer-group text-slate-950 text-xl"></i>
-        </div>
-        <h2 class="text-lg font-black text-white">Design System</h2>
-        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Nuevo sistema visual médico futurista: tokens de color, tipografía, botones, formularios, alertas y patrones reutilizables.</p>
-        <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-cyan-300">Explorar sistema <i class="fa-solid fa-arrow-right"></i></span>
-      </a>
-
-      <!-- Prototipo Completo -->
-      <a href="interfaz_medisync_senior.html" class="card glass rounded-2xl p-6 block">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center mb-4">
-          <i class="fa-solid fa-mobile-screen text-white text-xl"></i>
-        </div>
-        <h2 class="text-lg font-black text-white">Prototipo Completo</h2>
-        <p class="text-xs text-slate-400 mt-2 leading-relaxed">App funcional con doble vista, voz, sincronización en la nube o modo local, código de vinculación y todas las funcionalidades del prototipo.</p>
-        <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-emerald-400">Probar app <i class="fa-solid fa-arrow-right"></i></span>
-      </a>
-
-      <!-- Tutorial -->
-      <a href="tutorial_medisync.html" class="card glass rounded-2xl p-6 block">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-600 to-blue-600 flex items-center justify-center mb-4">
-          <i class="fa-solid fa-book-open text-white text-xl"></i>
-        </div>
-        <h2 class="text-lg font-black text-white">Tutorial de la App</h2>
-        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Guía paso a paso de cada botón y funcionalidad. Explica qué hace cada elemento y cómo funciona.</p>
-        <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-cyan-400">Ver tutorial <i class="fa-solid fa-arrow-right"></i></span>
-      </a>
-
-      <!-- Prototipo Simplificado -->
-      <a href="prototipo_simple.html" class="card glass rounded-2xl p-6 block">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center mb-4">
-          <i class="fa-solid fa-display text-white text-xl"></i>
-        </div>
-        <h2 class="text-lg font-black text-white">Prototipo Simplificado</h2>
-        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Ambas vistas (Mamá y Cuidador) lado a lado. Sin código de vinculación. Más simple y fácil de entender. Ideal para presentaciones.</p>
-        <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-purple-400">Ver demo <i class="fa-solid fa-arrow-right"></i></span>
-      </a>
-
-      <!-- Ensayo APA 7 -->
-      <a href="ensayo_medisync_senior.html" class="card glass rounded-2xl p-6 block">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-600 to-slate-800 flex items-center justify-center mb-4">
-          <i class="fa-solid fa-file-lines text-white text-xl"></i>
-        </div>
-        <h2 class="text-lg font-black text-white">Ensayo Académico</h2>
-        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Ensayo en formato APA 7. Visualización web + descarga DOCX. Incluye previsualizador modal.</p>
-        <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-slate-300">Leer ensayo <i class="fa-solid fa-arrow-right"></i></span>
-      </a>
-
-      <!-- GitHub Repo -->
-      <a href="https://github.com/brayanortiz906-lab/medisync-senior" target="_blank" rel="noopener" class="card glass rounded-2xl p-6 block">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center mb-4">
-          <i class="fa-brands fa-github text-white text-xl"></i>
-        </div>
-        <h2 class="text-lg font-black text-white">Repositorio GitHub</h2>
-        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Código fuente completo, prototipo web, app Android nativa, Supabase/Google y release v9.0.4.</p>
-        <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-slate-300">Ver repo <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></span>
-      </a>
+  <section class="ms-section">
+    <div class="ms-section-head">
+      <span class="ms-eyebrow">Sistemas</span>
+      <h2>Todo el proyecto, en un solo lugar</h2>
+      <p>Landing, prototipos, documentación y sistema de diseño. Cada pieza explica una parte del producto.</p>
     </div>
 
-    <!-- Info Section -->
-    <div class="mt-10 glass rounded-2xl p-6">
-      <h3 class="text-lg font-black text-white mb-3">📋 Información del Proyecto</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-xs text-slate-300">
-        <div>
-          <p class="font-bold text-slate-200">Institución</p>
-          <p>Institución Universitaria Pascual Bravo</p>
-        </div>
-        <div>
-          <p class="font-bold text-slate-200">Materia</p>
-          <p>TICs y Competencias Digitales 2026</p>
-        </div>
-        <div>
-          <p class="font-bold text-slate-200">Equipo</p>
-          <p>Santiago · Brayan</p>
-        </div>
-        <div>
-          <p class="font-bold text-slate-200">Tecnologías</p>
-          <p>HTML5 · Tailwind CSS · JavaScript · Kotlin · Jetpack Compose · Supabase</p>
-        </div>
+    <div class="ms-grid-cards">
+
+      <a href="landing_medisync_senior.html" class="ms-tile">
+        <span class="ms-tile-icon"><i class="fa-solid fa-bullhorn"></i></span>
+        <h3>Landing Page</h3>
+        <p>Página principal del proyecto. Hero, problema, solución, demo, pitch, ensayo y equipo.</p>
+        <span class="ms-tile-cta">Ver página <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="design-system.html" class="ms-tile">
+        <span class="ms-tile-icon"><i class="fa-solid fa-swatchbook"></i></span>
+        <h3>Design System</h3>
+        <p>Tokens de color, tipografía, botones, formularios, alertas y patrones reutilizables del producto.</p>
+        <span class="ms-tile-cta">Explorar sistema <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="interfaz_medisync_senior.html" class="ms-tile">
+        <span class="ms-tile-icon"><i class="fa-solid fa-mobile-screen"></i></span>
+        <h3>Prototipo Completo</h3>
+        <p>App funcional con doble vista, voz, sincronización en la nube o modo local, código de vinculación y todas las funcionalidades.</p>
+        <span class="ms-tile-cta">Probar app <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="tutorial_medisync.html" class="ms-tile">
+        <span class="ms-tile-icon"><i class="fa-solid fa-book-open"></i></span>
+        <h3>Tutorial de la App</h3>
+        <p>Guía paso a paso de cada botón y funcionalidad. Explica qué hace cada elemento y cómo funciona.</p>
+        <span class="ms-tile-cta">Ver tutorial <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="prototipo_simple.html" class="ms-tile">
+        <span class="ms-tile-icon"><i class="fa-solid fa-display"></i></span>
+        <h3>Prototipo Simplificado</h3>
+        <p>Ambas vistas (Mamá y Cuidador) lado a lado. Sin código de vinculación. Más simple y fácil de entender.</p>
+        <span class="ms-tile-cta">Ver demo <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="ensayo_medisync_senior.html" class="ms-tile">
+        <span class="ms-tile-icon"><i class="fa-solid fa-file-lines"></i></span>
+        <h3>Ensayo Académico</h3>
+        <p>Ensayo en formato APA 7. Visualización web y descarga DOCX. Incluye previsualizador modal.</p>
+        <span class="ms-tile-cta">Leer ensayo <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="https://github.com/brayanortiz906-lab/medisync-senior" target="_blank" rel="noopener" class="ms-tile">
+        <span class="ms-tile-icon"><i class="fa-brands fa-github"></i></span>
+        <h3>Repositorio GitHub</h3>
+        <p>Código fuente completo, prototipo web, app Android nativa, Supabase/Google y release v9.0.4.</p>
+        <span class="ms-tile-cta">Ver repo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="ms-section">
+    <div class="ms-section-head">
+      <span class="ms-eyebrow">Ficha</span>
+      <h2>Información del Proyecto</h2>
+    </div>
+    <dl class="ms-info">
+      <div>
+        <dt>Institución</dt>
+        <dd>Institución Universitaria Pascual Bravo</dd>
       </div>
-    </div>
+      <div>
+        <dt>Materia</dt>
+        <dd>TICs y Competencias Digitales 2026</dd>
+      </div>
+      <div>
+        <dt>Equipo</dt>
+        <dd>Santiago · Brayan</dd>
+      </div>
+      <div>
+        <dt>Tecnologías</dt>
+        <dd>HTML5 · Tailwind CSS · JavaScript · Kotlin · Jetpack Compose · Supabase</dd>
+      </div>
+    </dl>
+  </section>
 
-    <!-- Por qué / Pitch -->
-    <div class="mt-8 grid grid-cols-1 lg:grid-cols-5 gap-5">
-      <section class="lg:col-span-2 glass rounded-2xl p-6 border border-rose-500/30">
-        <span class="text-xs font-black uppercase tracking-widest text-rose-400">Por qué existe</span>
-        <h2 class="mt-2 text-2xl font-black text-white">Las cajas son idénticas. Los olvidos cuestan salud.</h2>
-        <p class="mt-3 text-sm text-slate-300 leading-relaxed">María y los adultos mayores tienen problemas para tomar la medicina correcta porque las cajas son idénticas y sufren olvidos; esto le cuesta complicaciones de salud y horas a su cuidador.</p>
-        <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
-          <div class="rounded-2xl bg-slate-950/50 p-3"><p class="text-2xl font-black text-rose-300">5+</p><p class="text-[10px] text-slate-400 font-bold">horas del cuidador</p></div>
-          <div class="rounded-2xl bg-slate-950/50 p-3"><p class="text-2xl font-black text-amber-300">2</p><p class="text-[10px] text-slate-400 font-bold">vistas conectadas</p></div>
-          <div class="rounded-2xl bg-slate-950/50 p-3"><p class="text-2xl font-black text-emerald-300">1</p><p class="text-[10px] text-slate-400 font-bold">botón para tomar</p></div>
-        </div>
-      </section>
-      <section class="lg:col-span-3 glass rounded-2xl p-6">
-        <span class="text-xs font-black uppercase tracking-widest text-amber-400">Videos</span>
-        <h2 class="mt-2 text-2xl font-black text-white">Pitch y prototipo en video.</h2>
-        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <figure class="rounded-2xl overflow-hidden bg-slate-950 border border-white/10"><video src="assets/videos/pich.mp4" controls preload="metadata" playsinline class="w-full aspect-video object-contain bg-black"></video><figcaption class="p-3 text-[11px] text-slate-400 font-bold">Video pitch — problema, solución y pedido de inversión.</figcaption></figure>
-          <figure class="rounded-2xl overflow-hidden bg-slate-950 border border-white/10"><video src="assets/videos/videoprototipo.mp4" controls preload="metadata" playsinline class="w-full aspect-video object-contain bg-black"></video><figcaption class="p-3 text-[11px] text-slate-400 font-bold">Demostración del prototipo funcional.</figcaption></figure>
-        </div>
-      </section>
-    </div>
+  <div class="ms-split">
 
-    <!-- Estado del producto -->
-    <div class="mt-6 glass rounded-2xl p-4 border border-emerald-500/30">
-      <p class="text-xs text-emerald-300">
-        <i class="fa-solid fa-circle-check mr-1"></i>
-        <strong>Versión actual:</strong> Android nativo con Demo local y Paired con Google Sign-In + Supabase. Sincronización de tomas entre dispositivos. <a href="https://github.com/brayanortiz906-lab/medisync-senior/releases/tag/v9.0.4" class="underline hover:text-emerald-200">Release v9.0.4</a>
+    <article class="ms-card">
+      <span class="ms-eyebrow">Por qué existe</span>
+      <h2>Las cajas son idénticas. Los olvidos cuestan salud.</h2>
+      <p>
+        María y los adultos mayores tienen problemas para tomar la medicina correcta porque las cajas
+        son idénticas y sufren olvidos; esto le cuesta complicaciones de salud y horas a su cuidador.
       </p>
-    </div>
+      <div class="ms-stats">
+        <div><b>5+</b><small>horas del cuidador</small></div>
+        <div><b>2</b><small>vistas conectadas</small></div>
+        <div><b>1</b><small>botón para tomar</small></div>
+      </div>
+    </article>
 
-    <!-- Footer -->
-    <footer class="mt-10 text-center text-[10px] text-slate-500">
-      <p>© 2026 MediSync Senior · Institución Universitaria Pascual Bravo · TICs y Competencias Digitales</p>
-    </footer>
+    <article class="ms-card">
+      <span class="ms-eyebrow">Videos</span>
+      <h2>Pitch y prototipo en video.</h2>
+      <div class="ms-videos">
+        <figure>
+          <video src="assets/videos/pich.mp4" controls preload="metadata" playsinline></video>
+          <figcaption>Video pitch — problema, solución y pedido de inversión.</figcaption>
+        </figure>
+        <figure>
+          <video src="assets/videos/videoprototipo.mp4" controls preload="metadata" playsinline></video>
+          <figcaption>Demostración del prototipo funcional.</figcaption>
+        </figure>
+      </div>
+    </article>
+
   </div>
-<!-- DRAWER MENU -->
-<style>
-#drawerBtn{position:fixed;top:60px;right:16px;z-index:10000;width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#2563eb,#10b981);color:#fff;border:none;box-shadow:0 6px 20px rgba(0,0,0,0.35);cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;}
-#drawerOverlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:10001;display:none;}
-#drawerOverlay.open{display:block;}
-#drawerPanel{position:fixed;top:0;right:0;height:100%;width:280px;max-width:85vw;background:rgba(10,14,26,0.98);backdrop-filter:blur(16px);border-left:1px solid rgba(255,255,255,0.12);z-index:10002;transform:translateX(100%);transition:transform .25s ease;padding:20px;overflow-y:auto;}
-#drawerPanel.open{transform:translateX(0);}
-#drawerPanel a{display:block;padding:10px 14px;color:#e2e8f0;text-decoration:none;border-radius:8px;font-size:15px;margin-bottom:4px;}
-#drawerPanel a:hover{background:rgba(255,255,255,0.1);}
-#drawerPanel .section-link{font-size:13px;color:#cbd5e1;padding:6px 14px;}
-#drawerPanel h3{color:#94a3b8;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin:16px 0 8px 4px;}
-#drawerClose{position:absolute;top:16px;right:16px;background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;}
-</style>
-<button id="drawerBtn" onclick="document.getElementById('drawerOverlay').classList.add('open');document.getElementById('drawerPanel').classList.add('open');" aria-label="Menu">
-  <i class="fa-solid fa-bars"></i>
-</button>
-<div id="drawerOverlay" onclick="document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawerPanel').classList.remove('open');"></div>
-<div id="drawerPanel">
-  <button id="drawerClose" onclick="document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawerPanel').classList.remove('open');" aria-label="Cerrar">
-    <i class="fa-solid fa-xmark"></i>
-  </button>
-  <h3>Paginas</h3>
-  <a href="index.html" onclick="document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawerPanel').classList.remove('open');">Inicio</a>
-  <a href="landing_medisync_senior.html" onclick="document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawerPanel').classList.remove('open');">Landing</a>
-  <a href="tutorial_medisync.html" onclick="document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawerPanel').classList.remove('open');">Tutorial</a>
-  <a href="prototipo_simple.html" onclick="document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawerPanel').classList.remove('open');">Prototipo</a>
-  <a href="prototipo_funcional.html" onclick="document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawerPanel').classList.remove('open');">Funcional</a>
-  <a href="prototipo_doble.html" onclick="document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawerPanel').classList.remove('open');">Vista Doble</a>
-  <a href="ensayo_medisync_senior.html" onclick="document.getElementById('drawerOverlay').classList.remove('open');document.getElementById('drawerPanel').classList.remove('open');">Ensayo</a>
-  
+
+  <div class="ms-status">
+    <i class="fa-solid fa-circle-check"></i>
+    <p>
+      <strong>Versión actual:</strong> Android nativo con Demo local y Paired con Google Sign-In + Supabase.
+      Sincronización de tomas entre dispositivos.
+      <a href="https://github.com/brayanortiz906-lab/medisync-senior/releases/tag/v9.0.4">Release v9.0.4</a>
+    </p>
+  </div>
+
+  <footer class="ms-footer">
+    <p>© 2026 MediSync Senior · Institución Universitaria Pascual Bravo · TICs y Competencias Digitales</p>
+    <nav>
+      <a href="landing_medisync_senior.html">Landing</a>
+      <a href="design-system.html">Sistema de diseño</a>
+      <a href="ensayo_medisync_senior.html">Ensayo</a>
+      <a href="https://github.com/brayanortiz906-lab/medisync-senior">GitHub</a>
+    </nav>
+  </footer>
+
 </div>
 
   <script src="assets/js/ms-nav.js"></script>
