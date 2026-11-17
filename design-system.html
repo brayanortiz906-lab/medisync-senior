@@ -4,126 +4,426 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MediSync Senior Design System</title>
-<meta name="description" content="Sistema de diseño biomédico futurista para MediSync Senior: tokens, identidad, componentes y patrones de uso.">
-<meta name="theme-color" content="#030712">
+<meta name="description" content="Sistema de diseño de MediSync Senior: tokens, identidad, componentes y patrones de producto.">
+<meta name="theme-color" content="#0b111c">
 <link rel="icon" type="image/svg+xml" href="assets/img/medisync-logo-v3.svg">
-<link rel="stylesheet" href="assets/css/medisync-design-system.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b111c;
+    --surface: #101823;
+    --surface-2: #16212f;
+    --deep: #0d1520;
+    --line: #22303f;
+    --line-soft: #1f2a37;
+    --text: #e8eef6;
+    --muted: #94a3b8;
+    --faint: #64748b;
+    --accent: #34d399;
+    --accent-soft: #6ee7b7;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --info: #38bdf8;
+    --display: 'Space Grotesk', 'IBM Plex Sans', system-ui, sans-serif;
+    --body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --mono: 'IBM Plex Mono', Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    background-image:
+      linear-gradient(#131c29 1px, transparent 1px),
+      linear-gradient(90deg, #131c29 1px, transparent 1px);
+    background-size: 48px 48px;
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .container { width: 100%; max-width: 1180px; margin-inline: auto; padding-inline: 1.25rem; }
+  @media (min-width: 768px) { .container { padding-inline: 2rem; } }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 40;
+    background: rgba(11, 17, 28, .88);
+    border-bottom: 1px solid var(--line-soft);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; }
+  .brand { display: inline-flex; align-items: center; gap: .625rem; font-family: var(--display); font-weight: 700; letter-spacing: -.02em; text-decoration: none; font-size: 1rem; }
+  .brand img { width: 32px; height: 32px; border-radius: .5rem; }
+  .brand em { color: var(--accent); font-style: normal; }
+  .nav-links { display: none; gap: .25rem; }
+  .nav-links a {
+    padding: .5rem .75rem; border-radius: .625rem; text-decoration: none;
+    color: var(--muted); font-size: .875rem; font-weight: 500;
+    transition: color .2s ease, background-color .2s ease;
+  }
+  .nav-links a:hover { color: var(--text); background: var(--surface-2); }
+  @media (min-width: 900px) { .nav-links { display: flex; } }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    min-height: 44px; padding: .75rem 1.125rem; border-radius: .75rem;
+    border: 1px solid transparent; cursor: pointer; text-decoration: none;
+    font-family: var(--body); font-size: .875rem; font-weight: 600; line-height: 1;
+    transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+  }
+  .btn-primary { background: var(--accent); color: #06251a; }
+  .btn-primary:hover { background: var(--accent-soft); }
+  .btn-ghost { background: transparent; border-color: var(--line); color: var(--text); }
+  .btn-ghost:hover { background: var(--surface-2); border-color: #2c3c4f; }
+  .btn-sm { min-height: 38px; padding: .5rem .875rem; font-size: .8125rem; }
+  @media (max-width: 559px) { .nav-cta { display: none; } }
+
+  /* ---------- Hero ---------- */
+  .hero { display: grid; gap: 2.5rem; padding-block: clamp(2.5rem, 6vw, 4.5rem); align-items: center; }
+  @media (min-width: 900px) { .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 3.5rem; } }
+  .eyebrow { display: inline-flex; align-items: center; gap: .5rem; margin: 0; color: var(--accent); font-size: .6875rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(52, 211, 153, .14); }
+  .h1 {
+    margin: 1rem 0 0; font-family: var(--display); font-weight: 700;
+    font-size: clamp(2.25rem, 6vw, 3.75rem); line-height: 1.03; letter-spacing: -.035em;
+  }
+  .accent { color: var(--accent); }
+  .lead { margin: 1.25rem 0 0; max-width: 46ch; color: var(--muted); font-size: 1.0625rem; line-height: 1.7; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+  .hero-meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 2.5rem 0 0; padding-top: 1.5rem; border-top: 1px solid var(--line-soft); }
+  .hero-meta dt { color: var(--faint); font-size: .6875rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+  .hero-meta dd { margin: .25rem 0 0; font-family: var(--display); font-size: 1.125rem; font-weight: 600; }
+
+  .logo-stage {
+    position: relative; display: grid; place-items: center; gap: 1.25rem;
+    padding: 2.5rem 1.5rem; min-height: 300px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 1.25rem;
+  }
+  .logo-stage::before {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+    background-image: linear-gradient(#151f2c 1px, transparent 1px), linear-gradient(90deg, #151f2c 1px, transparent 1px);
+    background-size: 24px 24px; opacity: .55;
+  }
+  .logo-mark { position: relative; width: min(180px, 46vw); height: auto; }
+  .logo-caption { position: relative; text-align: center; }
+  .logo-caption strong { display: block; font-family: var(--display); font-size: .9375rem; letter-spacing: -.01em; }
+  .logo-caption span { display: block; margin-top: .25rem; color: var(--faint); font-size: .75rem; }
+
+  /* ---------- Sections ---------- */
+  .section { padding-block: clamp(3rem, 6vw, 5rem); border-top: 1px solid var(--line-soft); }
+  .section-head { max-width: 62ch; margin-bottom: 2.25rem; }
+  .kicker { color: var(--accent); font-family: var(--mono); font-size: .6875rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; }
+  .h2 { margin: .75rem 0 0; font-family: var(--display); font-weight: 700; font-size: clamp(1.625rem, 3.6vw, 2.25rem); line-height: 1.15; letter-spacing: -.03em; }
+  .section-head p { margin: .875rem 0 0; color: var(--muted); }
+
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 1.25rem; padding: 1.375rem; }
+  .card h3 { margin: 0 0 1.125rem; font-family: var(--display); font-size: 1rem; font-weight: 600; letter-spacing: -.01em; }
+  .card p { margin: 1rem 0 0; color: var(--faint); font-size: .8125rem; line-height: 1.6; }
+
+  .grid-2 { display: grid; gap: 1rem; }
+  @media (min-width: 860px) { .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; } }
+  .grid-4 { display: grid; gap: 1rem; }
+  @media (min-width: 640px) { .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1100px) { .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; } }
+
+  /* ---------- Swatches ---------- */
+  .swatches { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); }
+  .swatch { border: 1px solid var(--line-soft); border-radius: .875rem; padding: .625rem; background: rgba(255, 255, 255, .02); }
+  .swatch-color { height: 52px; border-radius: .5rem; border: 1px solid rgba(255, 255, 255, .1); }
+  .swatch strong { display: block; margin-top: .625rem; font-size: .75rem; font-weight: 600; }
+  .swatch small { display: block; margin-top: .125rem; color: var(--faint); font-family: var(--mono); font-size: .625rem; line-height: 1.5; }
+
+  /* ---------- Type / tokens ---------- */
+  .type-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .25rem 1rem; padding: .875rem 0; border-bottom: 1px solid var(--line-soft); }
+  .type-row:last-of-type { border-bottom: 0; }
+  .type-row strong { font-family: var(--display); font-weight: 600; }
+  .type-row small { color: var(--faint); font-size: .75rem; }
+  .t-display { font-size: 1.5rem; letter-spacing: -.03em; }
+  .t-body { font-family: var(--body); font-size: 1rem; font-weight: 400; }
+  .t-caption { font-size: .6875rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .t-mono { font-family: var(--mono); font-size: .75rem; font-weight: 500; }
+
+  .scale { display: flex; align-items: flex-end; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .scale i { display: block; width: .4375rem; background: var(--accent); border-radius: 2px; opacity: .85; }
+  .radii { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .radii span { display: inline-flex; align-items: center; gap: .375rem; padding: .375rem .625rem; border: 1px solid var(--line); border-radius: .625rem; color: var(--muted); font-family: var(--mono); font-size: .6875rem; }
+
+  /* ---------- Components ---------- */
+  .row { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .badge { display: inline-flex; align-items: center; gap: .375rem; padding: .3125rem .5625rem; border: 1px solid currentColor; border-radius: 999px; font-size: .625rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .badge-success { color: var(--accent); background: rgba(52, 211, 153, .09); }
+  .badge-warning { color: var(--amber); background: rgba(251, 191, 36, .09); }
+  .badge-danger { color: var(--rose); background: rgba(251, 113, 133, .1); }
+  .badge-info { color: var(--info); background: rgba(56, 189, 248, .1); }
+  .badge .dot { width: 5px; height: 5px; box-shadow: none; }
+
+  .form { display: grid; gap: .375rem; }
+  .form label { color: var(--muted); font-size: .75rem; font-weight: 600; }
+  .form input {
+    width: 100%; min-height: 46px; padding: .6875rem .8125rem;
+    background: var(--deep); color: var(--text);
+    border: 1px solid var(--line); border-radius: .625rem;
+    font-family: var(--body); font-size: .875rem;
+    transition: border-color .2s ease;
+  }
+  .form input::placeholder { color: #52667a; }
+  .form input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(52, 211, 153, .15); }
+  .form + .form { margin-top: .875rem; }
+
+  .alert { display: grid; gap: .25rem; padding: .875rem 1rem; border: 1px solid var(--line); border-left: 2px solid var(--muted); border-radius: .75rem; background: rgba(255, 255, 255, .02); }
+  .alert strong { font-size: .8125rem; font-weight: 600; }
+  .alert span { color: var(--faint); font-size: .8125rem; line-height: 1.55; }
+  .alert-success { border-left-color: var(--accent); }
+  .alert-success strong { color: var(--accent); }
+  .alert + .alert { margin-top: .625rem; }
+
+  /* ---------- Product patterns ---------- */
+  .dose { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .875rem; align-items: center; padding: .875rem; border: 1px solid var(--line); border-radius: .875rem; background: var(--deep); }
+  .dose-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: .625rem; background: var(--surface-2); border: 1px solid var(--line); color: var(--accent); font-family: var(--display); font-size: 1.25rem; font-weight: 600; }
+  .dose-title { font-family: var(--display); font-size: .875rem; font-weight: 600; }
+  .dose-meta { color: var(--faint); font-size: .75rem; }
+  .dose .badge { grid-column: 1 / -1; justify-self: start; }
+
+  .metric { font-family: var(--display); font-size: 3rem; font-weight: 700; line-height: 1; letter-spacing: -.04em; color: var(--accent); }
+  .metric small { font-size: .9375rem; color: var(--muted); font-weight: 500; }
+  .metric-label { display: block; color: var(--faint); font-size: .6875rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+
+  .code { margin: 0; overflow-x: auto; padding: .875rem 1rem; border: 1px solid var(--line); border-radius: .75rem; background: #080f19; color: var(--accent-soft); font-family: var(--mono); font-size: .6875rem; line-height: 1.75; }
+
+  .principles { margin: 0; padding: 0; list-style: none; display: grid; gap: .625rem; }
+  .principles li { position: relative; padding-left: 1.25rem; color: var(--muted); font-size: .8125rem; line-height: 1.6; }
+  .principles li::before { content: ""; position: absolute; left: 0; top: .5em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .principles strong { color: var(--text); font-weight: 600; }
+
+  /* ---------- Footer ---------- */
+  .footer { border-top: 1px solid var(--line-soft); padding-block: 2.25rem; }
+  .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; color: var(--faint); font-size: .8125rem; }
+  .footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; transition: color .2s ease; }
+  .footer a:hover { color: var(--accent); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  }
+</style>
 </head>
-<body class="ms-design-system">
-<header class="ms-nav">
-  <div class="ms-container ms-nav-inner">
-    <a class="ms-brand" href="index.html" aria-label="Ir al inicio de MediSync Senior">
-      <img src="assets/img/medisync-logo-v3.svg" alt="MediSync Senior">
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="Ir al inicio de MediSync Senior">
+      <img src="assets/img/medisync-logo-v3.svg" alt="">
       <span>MediSync <em>Senior</em></span>
     </a>
-    <nav class="ms-nav-links" aria-label="Navegación del sistema">
+    <nav class="nav-links" aria-label="Secciones del sistema de diseño">
       <a href="#tokens">Tokens</a>
       <a href="#componentes">Componentes</a>
       <a href="#producto">Producto</a>
     </nav>
+    <a class="btn btn-primary btn-sm nav-cta" href="landing_medisync_senior.html">Ver producto ↗</a>
   </div>
 </header>
 
 <main>
-  <section class="ms-container ms-hero">
+  <section class="container hero">
     <div>
-      <p class="ms-eyebrow"><span class="ms-status-dot"></span> Design system · v1</p>
-      <h1 class="ms-title">Tecnología cálida para<br><span class="ms-gradient">el cuidado que importa.</span></h1>
-      <p class="ms-lead">Una identidad biomédica futurista, oscura y accesible para MediSync Senior: señales de salud, precisión tecnológica y una experiencia humana para adultos mayores y sus cuidadores.</p>
-      <div style="display:flex; gap:.7rem; flex-wrap:wrap; margin-top:2rem">
-        <a class="ms-button ms-button-primary" href="landing_medisync_senior.html">Ver producto <span aria-hidden="true">↗</span></a>
-        <a class="ms-button ms-button-secondary" href="#tokens">Explorar sistema</a>
+      <p class="eyebrow"><span class="dot"></span>Design system · v1</p>
+      <h1 class="h1">Tecnología cálida para <span class="accent">el cuidado que importa.</span></h1>
+      <p class="lead">Una identidad oscura, sobria y accesible para MediSync Senior: superficies planas, bordes de 1px, un solo acento de confirmación y una tipografía pensada para leerse a los 70 años.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="landing_medisync_senior.html">Ver producto ↗</a>
+        <a class="btn btn-ghost" href="#tokens">Explorar sistema</a>
       </div>
+      <dl class="hero-meta">
+        <div><dt>Superficies</dt><dd>9 páginas</dd></div>
+        <div><dt>Contraste mínimo</dt><dd>4.5:1</dd></div>
+        <div><dt>Texto base</dt><dd>16 px</dd></div>
+      </dl>
     </div>
-    <div class="ms-logo-stage" aria-label="Logo MediSync Senior">
-      <img src="assets/img/medisync-logo-v3.svg" alt="Logo MediSync Senior: corazón médico futurista" class="ms-logo-mark">
-      <div class="ms-logo-caption"><strong>Nova Care Mark</strong><span>Motor de salud · cuidado continuo · 12:00</span></div>
+    <div class="logo-stage" aria-label="Logo MediSync Senior">
+      <img src="assets/img/medisync-logo-v3.svg" alt="Logo MediSync Senior: corazón médico" class="logo-mark">
+      <div class="logo-caption">
+        <strong>Nova Care Mark</strong>
+        <span>Motor de salud · cuidado continuo · 12:00</span>
+      </div>
     </div>
   </section>
 
-  <section id="tokens" class="ms-section">
-    <div class="ms-container">
-      <div class="ms-section-title"><div class="ms-kicker">01 / Foundations</div><h2>Un sistema, no una decoración.</h2><p>Tokens semánticos para mantener consistencia entre la web, el prototipo y futuras superficies de producto.</p></div>
-      <div class="ms-grid">
-        <article class="ms-card">
+  <section id="tokens" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">01 / Foundations</span>
+        <h2 class="h2">Un sistema, no una decoración.</h2>
+        <p>Tokens semánticos para mantener consistencia entre la web, el prototipo y las futuras superficies de producto.</p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card" style="grid-column: 1 / -1">
           <h3>Color semántico</h3>
-          <div class="ms-swatches">
-            <div class="ms-swatch"><div class="ms-swatch-color" style="background:#030712"></div><strong>Deep Space</strong><small>#030712<br>App background</small></div>
-            <div class="ms-swatch"><div class="ms-swatch-color" style="background:#071426"></div><strong>Clinical Navy</strong><small>#071426<br>Surface base</small></div>
-            <div class="ms-swatch"><div class="ms-swatch-color" style="background:#20d8ff"></div><strong>Pulse Cyan</strong><small>#20D8FF<br>AI + signal</small></div>
-            <div class="ms-swatch"><div class="ms-swatch-color" style="background:#00e5a8"></div><strong>Vital Emerald</strong><small>#00E5A8<br>health confirm</small></div>
-            <div class="ms-swatch"><div class="ms-swatch-color" style="background:#f5b544"></div><strong>Care Amber</strong><small>#F5B544<br>attention</small></div>
-            <div class="ms-swatch"><div class="ms-swatch-color" style="background:#ff6b7a"></div><strong>Urgent Rose</strong><small>#FF6B7A<br>critical action</small></div>
+          <div class="swatches">
+            <div class="swatch"><div class="swatch-color" style="background:#0b111c"></div><strong>Deep Base</strong><small>#0B111C<br>fondo de página</small></div>
+            <div class="swatch"><div class="swatch-color" style="background:#101823"></div><strong>Surface</strong><small>#101823<br>tarjetas</small></div>
+            <div class="swatch"><div class="swatch-color" style="background:#16212f"></div><strong>Surface 2</strong><small>#16212F<br>chips y controles</small></div>
+            <div class="swatch"><div class="swatch-color" style="background:#22303f"></div><strong>Line</strong><small>#22303F<br>borde 1px</small></div>
+            <div class="swatch"><div class="swatch-color" style="background:#34d399"></div><strong>Vital Emerald</strong><small>#34D399<br>acento · confirmación</small></div>
+            <div class="swatch"><div class="swatch-color" style="background:#fbbf24"></div><strong>Care Amber</strong><small>#FBBF24<br>atención</small></div>
+            <div class="swatch"><div class="swatch-color" style="background:#fb7185"></div><strong>Urgent Rose</strong><small>#FB7185<br>acción crítica</small></div>
+            <div class="swatch"><div class="swatch-color" style="background:#38bdf8"></div><strong>Signal Cyan</strong><small>#38BDF8<br>información</small></div>
+          </div>
+          <p>Sin degradados ni halos: el color solo aparece con significado. Un único acento esmeralda conduce la acción.</p>
+        </article>
+
+        <article class="card">
+          <h3>Tipografía</h3>
+          <div class="type-row"><strong class="t-display">Space Grotesk</strong><small>Display / 700 · títulos</small></div>
+          <div class="type-row"><strong class="t-body">IBM Plex Sans</strong><small>Body / 400 · 16px mínimo</small></div>
+          <div class="type-row"><strong class="t-caption">IBM Plex Sans</strong><small>Caption / 600 · estados</small></div>
+          <div class="type-row"><strong class="t-mono">IBM Plex Mono</strong><small>Mono / 500 · datos y códigos</small></div>
+          <p>Mínimo de 16px para texto operativo y 4.5:1 de contraste en toda la interfaz.</p>
+        </article>
+
+        <article class="card">
+          <h3>Escala y radios</h3>
+          <div class="scale" aria-hidden="true">
+            <i style="height:4px"></i><i style="height:8px"></i><i style="height:12px"></i>
+            <i style="height:16px"></i><i style="height:24px"></i><i style="height:32px"></i>
+            <i style="height:48px"></i><i style="height:64px"></i>
+          </div>
+          <div class="radii">
+            <span>10px</span><span>16px</span><span>20px</span><span>24px</span>
+          </div>
+          <p>Ritmo vertical en múltiplos de 4. Radios de 10 a 24px: suficiente suavidad sin perder precisión técnica.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="componentes" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">02 / Components</span>
+        <h2 class="h2">Controles con intención.</h2>
+        <p>Patrones listos para la landing, el panel familiar y las tareas críticas.</p>
+      </div>
+
+      <div class="grid-4">
+        <article class="card">
+          <h3>Botones</h3>
+          <div class="row">
+            <button class="btn btn-primary btn-sm">Confirmar toma</button>
+            <button class="btn btn-ghost btn-sm">Ver historial</button>
+            <button class="btn btn-ghost btn-sm" style="border-color:rgba(251,113,133,.35);color:var(--rose)">Cancelar</button>
+          </div>
+          <p>Un CTA principal por pantalla. Las acciones destructivas van aisladas y con borde propio.</p>
+        </article>
+
+        <article class="card">
+          <h3>Badges de estado</h3>
+          <div class="row">
+            <span class="badge badge-success"><span class="dot"></span>Tomada</span>
+            <span class="badge badge-warning">Pendiente</span>
+            <span class="badge badge-danger">Omitir</span>
+            <span class="badge badge-info">Sincronizada</span>
+          </div>
+          <p>El color nunca es el único indicador: siempre hay texto visible.</p>
+        </article>
+
+        <article class="card">
+          <h3>Formularios</h3>
+          <div class="form">
+            <label for="code">Código de vinculación</label>
+            <input id="code" placeholder="MS-4821" autocomplete="off">
+          </div>
+          <div class="form">
+            <label for="name">Nombre del paciente</label>
+            <input id="name" placeholder="María López" autocomplete="name">
           </div>
         </article>
-        <article class="ms-card">
-          <h3>Tipografía</h3>
-          <div class="ms-type-row"><strong>Display / 700</strong><small>Inter · títulos y momentos de producto</small></div>
-          <div class="ms-type-row"><strong>Body / 400</strong><small>16px · lectura clara para adultos mayores</small></div>
-          <div class="ms-type-row"><strong>Caption / 600</strong><small>.72rem · estados, labels y metadatos</small></div>
-          <div class="ms-type-row"><strong>Mono / 12</strong><small>Datos, timestamps, códigos MS-0000</small></div>
-          <p class="ms-muted" style="margin-bottom:0">Mínimo recomendado de 16px para texto operativo y 4.5:1 de contraste.</p>
-        </article>
-      </div>
-    </div>
-  </section>
 
-  <section id="componentes" class="ms-section">
-    <div class="ms-container">
-      <div class="ms-section-title"><div class="ms-kicker">02 / Components</div><h2>Controles con intención.</h2><p>Patrones listos para landing, dashboard familiar y tareas críticas.</p></div>
-      <div class="ms-grid">
-        <article class="ms-card">
-          <h3>Botones</h3>
-          <div class="ms-button-row"><button class="ms-button ms-button-primary">Confirmar toma</button><button class="ms-button ms-button-secondary">Ver historial</button><button class="ms-button ms-button-ghost">Recordarme</button><button class="ms-button ms-button-danger">Cancelar</button></div>
-          <p class="ms-muted">Un CTA principal por pantalla. Acciones destructivas siempre aisladas.</p>
-        </article>
-        <article class="ms-card">
-          <h3>Badges de estado</h3>
-          <div class="ms-badge-row"><span class="ms-badge ms-badge-success"><span class="ms-status-dot"></span>Tomada</span><span class="ms-badge ms-badge-warning">Pendiente</span><span class="ms-badge ms-badge-danger">Omitir</span><span class="ms-badge ms-badge-info">Sincronizada</span></div>
-          <p class="ms-muted">El color nunca es el único indicador: siempre texto visible.</p>
-        </article>
-        <article class="ms-card">
-          <h3>Formularios</h3>
-          <div class="ms-form"><label class="ms-field-label" for="code">Código de vinculación</label><input class="ms-field" id="code" placeholder="MS-4821" autocomplete="off"><label class="ms-field-label" for="name">Nombre del paciente</label><input class="ms-field" id="name" placeholder="María López" autocomplete="name"></div>
-        </article>
-        <article class="ms-card">
+        <article class="card">
           <h3>Alertas</h3>
-          <div class="ms-alert ms-alert-success"><strong>Toma verificada</strong><p>La foto coincide con el medicamento programado.</p></div>
-          <div class="ms-alert"><strong>Revisa la toma</strong><p>Faltan 12 minutos para confirmar la dosis de la tarde.</p></div>
+          <div class="alert alert-success">
+            <strong>Toma verificada</strong>
+            <span>La foto coincide con el medicamento programado.</span>
+          </div>
+          <div class="alert">
+            <strong>Revisa la toma</strong>
+            <span>Faltan 12 minutos para confirmar la dosis de la tarde.</span>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="producto" class="ms-section">
-    <div class="ms-container">
-      <div class="ms-section-title"><div class="ms-kicker">03 / Product patterns</div><h2>Diseñado para la próxima toma.</h2><p>Patrones que priorizan claridad para la persona mayor y contexto operativo para la familia.</p></div>
-      <div class="ms-grid">
-        <article class="ms-card">
+  <section id="producto" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">03 / Product patterns</span>
+        <h2 class="h2">Diseñado para la próxima toma.</h2>
+        <p>Patrones que priorizan claridad para la persona mayor y contexto operativo para la familia.</p>
+      </div>
+
+      <div class="grid-4">
+        <article class="card">
           <h3>Tarjeta de medicación</h3>
-          <div class="ms-dose-card"><div class="ms-dose-icon">+</div><div><div class="ms-dose-title">Atorvastatina 20mg</div><div class="ms-dose-meta">1 tableta · cada 8:00 p. m. · caja azul</div></div><span class="ms-badge ms-badge-success">Tomada</span></div>
-          <p class="ms-muted">Acciones grandes, estado legible y metadatos mínimos.</p>
+          <div class="dose">
+            <div class="dose-icon">+</div>
+            <div>
+              <div class="dose-title">Atorvastatina 20mg</div>
+              <div class="dose-meta">1 tableta · 8:00 p. m. · caja azul</div>
+            </div>
+            <span class="badge badge-success">Tomada</span>
+          </div>
+          <p>Acciones grandes, estado legible y metadatos mínimos.</p>
         </article>
-        <article class="ms-card">
+
+        <article class="card">
           <h3>Indicadores</h3>
-          <div class="ms-metric"><small>Adherencia 30 días</small><strong>94<small style="font-size:.35em;color:var(--ms-text)">%</small></strong><p class="ms-muted" style="margin:.35rem 0 0">+8% vs. mes anterior</p></div>
+          <span class="metric-label">Adherencia 30 días</span>
+          <div class="metric">94<small>%</small></div>
+          <p style="color:var(--accent)">+8% vs. mes anterior</p>
         </article>
-        <article class="ms-card">
+
+        <article class="card">
           <h3>Tokens CSS</h3>
-          <code class="ms-code">--ms-bg: #030712;
---ms-surface: #071426;
---ms-cyan: #20D8FF;
---ms-emerald: #00E5A8;
---ms-radius-lg: 1.75rem;</code>
+          <pre class="code">--bg: #0b111c;
+--surface: #101823;
+--line: #22303f;
+--accent: #34d399;
+--radius: 1.25rem;</pre>
         </article>
-        <article class="ms-card">
+
+        <article class="card">
           <h3>Principios</h3>
-          <ul class="ms-muted" style="padding-left:1.1rem; margin-top:0"><li><strong style="color:var(--ms-text)">Cuidar antes que llamar la atención.</strong></li><li>Color con significado, nunca decorativo.</li><li>Feedback inmediato después de cada acción.</li><li>No depender solo del color o del sonido.</li></ul>
+          <ul class="principles">
+            <li><strong>Cuidar antes que llamar la atención.</strong></li>
+            <li>Color con significado, nunca decorativo.</li>
+            <li>Feedback inmediato después de cada acción.</li>
+            <li>No depender solo del color o del sonido.</li>
+          </ul>
         </article>
       </div>
     </div>
   </section>
 </main>
-<footer class="ms-footer"><div class="ms-container">MediSync Senior Design System · Construido para una adherencia comprensible, segura y digna.</div></footer>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>MediSync Senior Design System · Construido para una adherencia comprensible, segura y digna.</span>
+    <span><a href="index.html">Portal del proyecto</a> · <a href="landing_medisync_senior.html">Landing</a></span>
+  </div>
+</footer>
+
 </body>
 </html>
